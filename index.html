@@ -25,10 +25,10 @@ svg{max-width:100%;height:auto;background:var(--card);border:1px solid var(--bd)
 details{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 16px;margin:8px 0}summary{cursor:pointer;font-weight:600}
 code{background:var(--soft);padding:1px 6px;border-radius:5px}
 </style></head><body>
-<nav><a href="#c1">Réseaux</a><a href="#topo">Topologies</a><a href="#class">Classifications</a><a href="#arch">Architectures</a><a href="#eq">Équipements</a><a href="#sup">Supports</a><a href="#perf">Performances</a><a href="#test">Auto-test</a><button id="t">Thème</button></nav>
+<nav><a href="#c1">Réseaux</a><a href="#topo">Topologies</a><a href="#class">Classifications</a><a href="#arch">Architectures</a><a href="#eq">Équipements</a><a href="#sup">Supports</a><a href="#perf">Performances</a><a href="#test">Auto-test</a><a href="#td">TD corrigé</a><button id="t">Thème</button></nav>
 <main>
 <header><span class="tag">Iset'Com · Fadwa Saada</span><h1>Introduction aux Télécommunications : révision</h1>
-<p>Chapitre 1 (grands principes, topologies, classifications) et Chapitre 2 (composants et supports de transmission), organisés pour réviser vite.</p></header>
+<p>Chapitre 1 (grands principes, topologies, classifications) et Chapitre 2 (composants et supports de transmission), organisés pour réviser vite, avec tout ce qu’il faut pour résoudre le TD (section 9).</p></header>
 
 <h2 id="c1">1. Grands principes des réseaux</h2>
 <div class="key"><b>Réseau</b> : ensemble de matériels et de logiciels permettant à des équipements de communiquer entre eux. <b>Objectif</b> : partager des ressources matérielles (disques, imprimantes) et logicielles (fichiers, applications).</div>
@@ -37,6 +37,11 @@ code{background:var(--soft);padding:1px 6px;border-radius:5px}
 <div class="card"><b>🛡️ Fiabilité</b><br>Données et traitements dupliqués : si une machine tombe, une autre prend le relais.</div>
 <div class="card"><b>💬 Communication</b><br>E-mail, visioconférence, chat, téléphonie sur IP.</div>
 <div class="card"><b>🛒 Services</b><br>E-commerce, accès à distance (banque, bibliothèques), divertissement.</div></div>
+<div class="card"><b>Plus de détails</b><ul><li>Partage de fichiers, d’applications (compilation, SGBD) et de ressources matérielles (imprimante, disque, processeur) ; téléchargement.</li>
+<li>Transfert de données (réseaux informatiques), de la parole (réseaux téléphoniques), de la parole + vidéo + données (RNIS ou IP).</li>
+<li>Les grands ordinateurs sont ~10× plus rapides mais ~1000× plus chers : d’où l’intérêt de partager.</li>
+<li>Accès distant : paiement de factures, solde, recherche d’informations, journaux et bibliothèques numériques, newsgroups, chat, poste-à-poste, jeux interactifs, vidéo à la carte, e-commerce.</li>
+<li>Les réseaux sont hétérogènes : architectures et supports variés (filaire → sans fil), portées du PAN au WAN. Techniques de télécoms : filaires, radio, optiques, satellitaires.</li></ul></div>
 <h3>Télécommunications</h3>
 <p>Transfert fiable d'information (texte, image, audio, vidéo) entre entités communicantes. Il faut : des données compréhensibles par A et B, un <b>support/lien</b>, une <b>adaptation entité-support</b> et un <b>protocole</b> d'échange. Les télécoms ont besoin des réseaux pour véhiculer l'information.</p>
 
@@ -60,6 +65,7 @@ code{background:var(--soft);padding:1px 6px;border-radius:5px}
 <tr><td><b>Arbre</b></td><td>Étoile hiérarchisée</td><td>Un seul chemin possible : liaison coupée = dialogue impossible</td></tr>
 <tr><td><b>Maille</b></td><td>Plusieurs itinéraires, tolère les ruptures (Internet, armée)</td><td>Nombre de liaisons très élevé</td></tr></table></div>
 
+<div class="key"><b>Anneau</b> : les nœuds sont en réalité reliés à un <b>répartiteur</b> (il organise et distribue les connexions), alors que le <b>hub</b> est un équipement actif qui répète les données vers plusieurs ports. <b>Bus</b> : chaque PC se branche par un connecteur spécial, une résistance (bouchon) à chaque extrémité évite les signaux parasites. <b>Étoile</b> : le contrôleur central est un élément cher. <b>Maille</b> : évolution de l’étoile (liaisons point à point), l’information suit des itinéraires divers sous le contrôle de superviseurs de réseau ou par routage réparti.</div>
 <h2 id="class">3. Classifications des réseaux</h2>
 <h3>Selon la portée</h3>
 <div class="grid">
@@ -77,6 +83,19 @@ code{background:var(--soft);padding:1px 6px;border-radius:5px}
 <div class="card"><b>Télédiffusion</b><br>TV/radio vers beaucoup de gens, liaison <b>unilatérale</b>. AM (ondes longues, moyennes, courtes), FM 87,5–108 MHz.</div>
 <div class="card"><b>Téléinformatique</b><br>Échange de données numériques et partage de ressources. Convergence vers données + voix + vidéo.</div></div>
 <div class="tw"><table><tr><th>Situation</th><th>Réponse</th></tr><tr><td>Écouteurs Bluetooth</td><td>PAN</td></tr><tr><td>Salle informatique / ville / Internet</td><td>LAN / MAN / WAN</td></tr><tr><td>Appel téléphonique classique</td><td>Commutation de circuits</td></tr><tr><td>Navigation internet</td><td>Commutation de paquets</td></tr><tr><td>TV parabole / TNT / câble</td><td>DVB-S / DVB-T / DVB-C</td></tr><tr><td>2G / données sur GSM / 3G</td><td>GSM / GPRS / UMTS</td></tr></table></div>
+<div class="card"><b>Compléments MAN / WAN</b> : un MAN demande des matériels particuliers d’interconnexion qui protègent aussi l’accès de chaque réseau. Un WAN est multi-services, formé de LAN interconnectés ; ses liaisons utilisent du matériel moins sophistiqué (raisons financières), donc le débit est un peu pénalisé.</div>
+<h3>Réseaux publics et privés</h3>
+<div class="tw"><table><tr><th></th><th>Réseau public</th><th>Réseau privé</th></tr>
+<tr><td><b>Accès</b></td><td>Services accessibles à tous, grand nombre d’utilisateurs</td><td>Réservé à un groupe déterminé ou une organisation, accès limité aux utilisateurs autorisés</td></tr>
+<tr><td><b>Exemples</b></td><td>Internet, PSTN (téléphone), PDN (données), PLMN (GSM) ; opérateurs mobiles, satellite, télédiffusion</td><td>Réseau d’entreprise (employés → serveurs et fichiers internes), réseau d’université (étudiants, enseignants)</td></tr>
+<tr><td><b>Ressources</b></td><td>Services accessibles publiquement</td><td>Ressources internes</td></tr></table></div>
+<h3>Télédiffusion : fréquences</h3>
+<div class="tw"><table><tr><th>Service</th><th>Bande</th></tr>
+<tr><td>AM ondes longues</td><td>148,5 – 283,5 kHz</td></tr><tr><td>AM ondes moyennes</td><td>525,5 – 1606,5 kHz</td></tr><tr><td>AM ondes courtes</td><td>3,4 – 26,1 MHz</td></tr>
+<tr><td>FM (zones urbaines/locales)</td><td>87,5 – 108 MHz</td></tr>
+<tr><td>TV analogique</td><td>Bande III : 174-230 MHz · Bande IV : 470-582 MHz · Bande V : 582-860 MHz</td></tr>
+<tr><td>Radio numérique TDAB</td><td>~1500 MHz (nouvelles modulations numériques aussi dans les anciennes bandes AM)</td></tr></table></div>
+<p>Télédiffusion : liaison <b>unilatérale</b>, réseaux des câblo-opérateurs et satellites (TDF, Eutelsat, Numericable). Gestion des fréquences très prudente, évolutions lentes. Réception de la TV numérique : DVB-S (satellite), DVB-T (TNT), DVB-C (câble). Télécoms : réseaux terrestres GSM → GPRS (données) → UMTS (3G) ; satellitaire avec la technologie <b>VSAT</b> (petites stations terriennes). Les télécoms utilisent des bandes différentes selon service, distance et support (UHF, SHF, EHF…).</p>
 <h3>Selon la commutation</h3>
 <div class="grid">
 <div class="card"><b>Circuits</b> (RTC, RNIS, GSM)<br>Circuit physique dédié établi avant l'échange. Adapté à la voix. <span class="ko">Occupé même inutilisé.</span></div>
@@ -87,6 +106,7 @@ code{background:var(--soft);padding:1px 6px;border-radius:5px}
 <div class="card"><b>Mode connecté</b><br>3 phases : <b>établissement → transfert → coupure</b>. Contrôle de flux, authentification. Ressources mobilisées parfois inutilisées.</div>
 <div class="card"><b>Mode non connecté</b><br>Pas de négociation, comme une lettre postale. Paquets = <b>datagrammes</b> indépendants, avec adresses complètes. Bon pour messages courts.</div></div>
 
+<div class="card"><b>Mode connecté</b> : un terminal peut gérer plusieurs connexions en parallèle, distinguées par leur <b>numéro de voie logique</b>. <b>Non connecté</b> : chaque datagramme porte les adresses complètes de l’expéditeur et du destinataire.</div>
 <h2 id="arch">4. Architectures</h2>
 <svg viewBox="0 0 800 190" role="img" aria-label="Client/serveur et poste à poste">
 <text x="130" y="20" font-weight="700">Client / Serveur</text><rect class="n" x="110" y="75" width="60" height="40"/><text x="118" y="100">Serveur</text>
@@ -100,16 +120,17 @@ code{background:var(--soft);padding:1px 6px;border-radius:5px}
 
 <h2 id="eq">5. Composants et équipements (Chap. 2)</h2>
 <div class="grid">
-<div class="card"><b>🖥️ Matériels</b><br>Terminaux (PC, smartphones, tablettes, Smart TV), ressources partagées (imprimantes, serveurs de stockage/calcul), câbles (RJ45, USB, optiques), équipements d'interconnexion, réseaux externes.</div>
+<div class="card"><b>🖥️ Matériels</b><br>Terminaux (PC, smartphones, tablettes, Smart TV), ressources partagées (imprimantes, vidéoprojecteur, serveurs de stockage/calcul), câbles (RJ45, USB, optiques), équipements d'interconnexion (hub, répéteur, switch, pont, passerelle, routeur, stations de base, points d'accès), réseaux externes.</div>
 <div class="card"><b>💾 Logiciels</b><br><b>Système d'exploitation</b> (réseau : mode serveur, ex. Windows Server, UNIX/Linux), <b>pilotes</b>, <b>logiciels</b> (serveur, application, administration).</div></div>
 <div class="key"><b>Carte réseau</b> = matériel ; <b>pilote réseau</b> = logiciel qui permet à l'OS de contrôler ce matériel.</div>
+<div class="card"><b>Logiciels du réseau (détail)</b><ul><li><b>OS local</b> : satisfait les besoins de son utilisateur. <b>OS réseau</b> : traite les demandes de service de plusieurs clients, fait fonctionner la machine en mode serveur (Windows Server, UNIX/Linux).</li><li><b>Logiciels serveur</b> : gèrent les tâches du réseau (accès aux ressources partagées, authentification/identification des utilisateurs).</li><li><b>Logiciels d'application</b> : logiciels classiques connectés à un serveur (ex. ajouter un format Internet à un PowerPoint, télécharger des données distantes dans un tableur).</li><li><b>Logiciels d'administration</b> : l'administrateur organise le réseau et l'optimise en analysant ses performances.</li></ul></div>
 <div class="tw"><table><tr><th>Équipement</th><th>Rôle principal</th></tr>
 <tr><td><b>Répéteur</b></td><td>Régénère/amplifie le signal (contre l'atténuation), prolonge la distance</td></tr>
 <tr><td><b>Hub (concentrateur)</b></td><td>Reçoit sur un port et <b>diffuse vers tous</b> les autres</td></tr>
 <tr><td><b>Pont (bridge)</b></td><td>Relie deux segments d'un même réseau ; filtre les trames dont la destination n'existe pas</td></tr>
 <tr><td><b>Switch (commutateur)</b></td><td>Relie plusieurs équipements d'un LAN ; envoie la trame <b>au port approprié</b></td></tr>
 <tr><td><b>Routeur</b></td><td>Relie plusieurs réseaux différents ; choisit le meilleur chemin</td></tr>
-<tr><td><b>Passerelle (gateway)</b></td><td>Relie réseaux/systèmes de protocoles différents ; passerelle par défaut si adresse inconnue</td></tr>
+<tr><td><b>Passerelle (gateway)</b></td><td>Relie réseaux/systèmes de protocoles différents ; passerelle par défaut si adresse inconnue ; peut être un ordinateur reliant les 2 réseaux ou un logiciel entre protocoles différents</td></tr>
 <tr><td><b>Point d'accès</b></td><td>Connecte des équipements en Wi-Fi</td></tr>
 <tr><td><b>Modem</b></td><td>Communication entre terminaux distants (réseau téléphonique, ligne dédiée)</td></tr>
 <tr><td><b>Multiplexeur</b></td><td>Combine plusieurs liaisons/informations (données, son, vidéo) sur une même voie</td></tr></table></div>
@@ -118,6 +139,25 @@ code{background:var(--soft);padding:1px 6px;border-radius:5px}
 <ellipse class="n" cx="70" cy="70" rx="45" ry="22"/><text x="52" y="74">Internet</text><rect class="n" x="170" y="50" width="70" height="40"/><text x="182" y="74">Routeur</text><rect class="n" x="310" y="50" width="70" height="40"/><text x="324" y="74">Switch</text>
 <path class="l" d="M115 70H170M240 70H310M380 60L470 30M380 70H470M380 80L470 110"/><rect class="n" x="470" y="15" width="70" height="30"/><text x="490" y="35">PC 1</text><rect class="n" x="470" y="55" width="70" height="30"/><text x="490" y="75">PC 2</text><rect class="n" x="470" y="95" width="70" height="22"/><text x="478" y="110">Serveur</text></svg>
 
+<h3>Autres équipements</h3>
+<div class="grid"><div class="card"><b>Carte réseau</b><br>Connecte une machine au réseau, possède une adresse qui l’identifie ; un serveur doit avoir une carte performante.</div>
+<div class="card"><b>Imprimante réseau</b><br>Partagée entre terminaux ; doit avoir une carte réseau.</div>
+<div class="card"><b>Stockage</b><br>Serveur de fichiers (documents, photos, vidéos, musique) ; disques durs, CD, DVD, SD connectés.</div>
+<div class="card"><b>Serveur</b><br>Ordinateur puissant qui offre différents services aux clients connectés.</div></div>
+<p>Compléments : le <b>concentrateur</b> peut être relié à d’autres concentrateurs (câble droit PC-hub, croisé hub-modem) ; le <b>pont</b> relie des réseaux de structures différentes (802.3 Ethernet, 802.4 Token Bus, 802.5 Token Ring) ; le <b>commutateur</b> crée un circuit virtuel vers une destination précise ; le <b>routeur</b> choisit le meilleur chemin ; le <b>modem</b> sert par ex. sur réseau téléphonique ou ligne dédiée ; le <b>multiplexeur</b> transporte données, son, vidéo sur un même signal.</p>
+<h3>Exemple : réseau d’entreprise</h3>
+<svg viewBox="0 0 760 330" role="img" aria-label="Réseau d’entreprise : Internet, routeur, switchs, serveur, PC, imprimante, point d’accès, smartphone">
+<path class="l" d="M380 40V80M380 110V140M380 170H150M380 170H610M380 140V170M150 170V200M380 170V200M610 170V200M150 230V260"/>
+<ellipse class="n" cx="380" cy="26" rx="50" ry="16"/><text x="352" y="30">Internet</text>
+<rect class="n" x="335" y="80" width="90" height="30" rx="6"/><text x="352" y="100">Routeur</text>
+<rect class="n" x="335" y="140" width="90" height="30" rx="6"/><text x="360" y="160">Switch</text>
+<rect class="n" x="110" y="200" width="80" height="30" rx="6"/><text x="138" y="220">PC1</text>
+<rect class="n" x="340" y="200" width="80" height="30" rx="6"/><text x="368" y="220">PC2</text>
+<rect class="n" x="570" y="200" width="80" height="30" rx="6"/><text x="591" y="220">Serveur</text>
+<rect class="n" x="100" y="260" width="100" height="30" rx="6"/><text x="120" y="280">Imprimante</text>
+<rect class="n" x="480" y="250" width="130" height="30" rx="6"/><text x="490" y="270">Point d’accès Wi-Fi</text>
+<path class="l" d="M545 250V170" stroke-dasharray="4"/><path class="l" d="M545 280V305"/><text x="460" y="322">Smartphone (Wi-Fi) · 2ᵉ switch derrière le point d’accès</text></svg>
+<p><b>Équipements présents</b> : routeur, switch, serveur, point d’accès Wi-Fi, PC1, imprimante (et PC2, smartphone). <b>Matériel ou logiciel ?</b> Carte réseau = matériel · pilote réseau = logiciel · switch = matériel · système d’exploitation = logiciel · routeur = matériel.</p>
 <h2 id="sup">6. Supports de transmission</h2>
 <div class="grid">
 <div class="card"><span class="tag">Métalliques</span><br>Paire torsadée, câble coaxial : courants électriques.</div>
@@ -131,6 +171,17 @@ code{background:var(--soft);padding:1px 6px;border-radius:5px}
 <tr><td><b>Satellite</b></td><td>Géostationnaire 36 000 km ; orbite basse 350-1400 km. Coût élevé, large bande partagée, délais longs.</td></tr>
 <tr><td><b>Ondes radioélectriques</b></td><td>10 kHz à 2 GHz ; pas de visibilité directe nécessaire ; sensibles aux interférences ; fréquences attribuées par accords internationaux.</td></tr></table></div>
 
+<div class="key"><b>Supports guidés</b> (matériels) : paire torsadée, coaxial, fibre. <b>Non guidés</b> (immatériels) : ondes radio, faisceaux hertziens, satellite. Un faisceau hertzien n’est donc <b>pas</b> une transmission guidée.</div>
+<div class="card"><b>Compléments</b><ul><li><b>Paire torsadée</b> : raccorde les usagers au central téléphonique ; l’affaiblissement dépend du diamètre des conducteurs ; répéteurs pour les longues distances ; plusieurs paires dans un câble → diaphonie ; bande passante selon diamètre et pureté ; avantages : technique maîtrisée, ajout d’équipements facile, faible coût ; STP : conducteur cylindrique (ou un blindage par paire) qui réduit les rayonnements parasites.</li>
+<li><b>Coaxial</b> : débit selon la longueur et les caractéristiques des conducteurs et de l’isolant ; âme conductrice, isolant (diélectrique), tresse de blindage, gaine.</li>
+<li><b>Fibre</b> : premières fibres télécoms vers 1970 (multimodes) ; diamètre ~0,1 mm ; quelques grammes au km ; facile d’emploi ; très grande capacité (plusieurs chaînes TV, téléphonie…) ; support principal des télécoms et des LAN haut débit.</li>
+<li><b>Sans fil</b> : ondes dans l’atmosphère ou le vide, souplesse pour la mobilité, pas de pose de câbles (coût réduit). Satellite : liaison par satellites en orbite, relaie de grands réseaux.</li></ul></div>
+<svg viewBox="0 0 760 190" role="img" aria-label="Fibre multimode à saut d’indice, à gradient d’indice, monomode">
+<rect class="n" x="20" y="20" width="220" height="40"/><path class="l" d="M20 40L60 25L100 55L140 25L180 55L240 35" stroke="#e11d48"/><text x="20" y="80">Multimode à saut d’indice</text>
+<rect class="n" x="270" y="20" width="220" height="40"/><path class="l" d="M270 40Q330 20 380 40T490 40" stroke="#e11d48"/><text x="270" y="80">Multimode à gradient d’indice</text>
+<rect class="n" x="520" y="20" width="220" height="40"/><path class="l" d="M520 40H740" stroke="#e11d48"/><text x="520" y="80">Monomode (cœur ~10 µm)</text>
+<text x="20" y="130">Multimode : débits &lt; Gb/s, distances ~km. Monomode : plus de débit, plus longue portée.</text>
+<text x="20" y="155">Le signal lumineux reste dans le cœur grâce à la gaine (réfraction).</text></svg>
 <h2 id="perf">7. Performances d'un support</h2>
 <h3>Bande passante</h3>
 <p>Bande de fréquences dans laquelle les signaux ont une puissance de sortie supérieure à un seuil. On utilise la bande passante à <b>3 dB</b> (puissance divisée par 2).</p>
@@ -141,6 +192,9 @@ code{background:var(--soft);padding:1px 6px;border-radius:5px}
 <div class="key"><code>C = W · log₂(1 + S/B)</code> bit/s, avec W la bande passante (Hz) et S/B le rapport signal/bruit (linéaire).</div>
 <div class="card"><b>Exemple :</b> W = 3100 Hz, RSB = 32 dB → S/B = 1585 → C = 3100 · log₂(1586) ≈ <b>33 000 bit/s</b>.</div>
 
+<h3>Formules à connaître</h3>
+<div class="key"><b>Affaiblissement</b> : A = Ps/Pe, A<sub>dB</sub> = 10·log₁₀(Ps/Pe) (négatif). Écrit en <b>atténuation positive</b> : 10·log₁₀(Pe/Ps) ; 15 dB d’atténuation = −15 dB. <b>RSB</b> : (S/B)<sub>dB</sub> = 10·log₁₀(S/B) donc S/B = 10<sup>RSB/10</sup>. <b>Octets → bits</b> : ×8. <b>Si log₂(X) = n</b> alors X = 2<sup>n</sup>.</div>
+<div class="card"><b>Fréquence de coupure</b> : fréquence où l’atténuation atteint 3 dB (puissance de sortie = moitié de l’entrée, signal encore exploitable). La bande passante est entre les fréquences de coupure : <code>BW = f₂ − f₁</code>. Plus elle est large, plus le support transporte d’informations par unité de temps. TEB = bits erronés / bits transmis (ex. j’envoie 1, le récepteur décide 0 : erreur).</div>
 <h2 id="test">8. Auto-test</h2>
 <details><summary>Broadcast vs multicast ?</summary>Broadcast : à tous les équipements du réseau local. Multicast : à un groupe de destinataires intéressés.</details>
 <details><summary>Commutation de circuits vs de paquets ?</summary>Circuits : chemin dédié établi avant la communication. Paquets : données découpées en paquets avec en-tête.</details>
@@ -150,6 +204,27 @@ code{background:var(--soft);padding:1px 6px;border-radius:5px}
 <details><summary>Vrai ou faux : la paire torsadée est un support immatériel ?</summary><span class="ko">Faux</span> : c'est un support métallique. De même, la fibre utilise de la lumière (pas des signaux électriques) et un faisceau hertzien n'est pas une transmission guidée.</details>
 <details><summary>Quel support insensible aux perturbations électromagnétiques ?</summary>La fibre optique.</details>
 <details><summary>Que vaut −3 dB ?</summary>Une puissance de sortie égale à la moitié de l'entrée (A = 0,5).</details>
+<details><summary>Associer support ↔ caractéristique</summary>Paire torsadée : deux conducteurs de cuivre torsadés · Coaxial : conducteur central entouré d’un blindage · Fibre : transmission par lumière · Faisceau hertzien : sans câble entre antennes · Ondes radio : propagation d’ondes électromagnétiques dans l’espace.</details>
+<details><summary>Compléter : cuivre, torsadés, blindage, lumière, antennes, sans fil, fibre optique</summary>Paire torsadée en <b>cuivre</b>, conducteurs <b>torsadés</b>, coaxial avec <b>blindage</b>, fibre = <b>lumière</b>, faisceau hertzien = deux <b>antennes</b> directionnelles, ondes radio = <b>sans fil</b>, la <b>fibre optique</b> est insensible aux perturbations électromagnétiques.</details>
+<details><summary>Vrai / Faux (10 affirmations du cours)</summary>Paire torsadée immatérielle : <span class="ko">Faux</span> · fibre = signaux électriques : <span class="ko">Faux</span> · coaxial a un conducteur central : <span class="ok">Vrai</span> · hertzien : antennes : <span class="ok">Vrai</span> · radio nécessite un câble : <span class="ko">Faux</span> · fibre peu sensible aux perturbations : <span class="ok">Vrai</span> · paire = deux conducteurs torsadés : <span class="ok">Vrai</span> · hertzien = transmission guidée : <span class="ko">Faux</span> · monomode : longues distances : <span class="ok">Vrai</span> · multimode : plusieurs modes : <span class="ok">Vrai</span>.</details>
+<details><summary>Répéteur, routeur, point d’accès, hub, switch, passerelle : rôle de chacun</summary>Régénérer un signal · relier différents réseaux · connecter en Wi-Fi · diffuser vers plusieurs ports · trame vers le port approprié · faire communiquer des réseaux à protocoles différents.</details>
+
+<h2 id="td">9. TD corrigé</h2>
+<details open><summary>Exercice 1 : supports, équipements, réseaux privé/public</summary>
+<p><b>1. Supports.</b> <b>Guidés (matériels)</b> : paire torsadée, câble coaxial, fibre optique. <b>Non guidés (immatériels)</b> : ondes radioélectriques, faisceaux hertziens, satellite.<br><b>3 avantages de la fibre</b> : très grande capacité de transmission · faible atténuation (régénération jusqu'à 200 km) · insensibilité aux perturbations électromagnétiques.</p>
+<p><b>2. Équipements.</b></p><div class="tw"><table><tr><th>Équipement</th><th>Fonction principale</th></tr><tr><td>Hub</td><td>Reçoit une trame et la diffuse vers tous ses ports</td></tr><tr><td>Switch</td><td>Transmet la trame uniquement vers le port correspondant à l'adresse de destination</td></tr><tr><td>Routeur</td><td>Relie des réseaux différents, achemine les paquets selon les adresses IP (meilleur chemin)</td></tr><tr><td>Répéteur</td><td>Régénère le signal pour augmenter la distance de transmission</td></tr></table></div>
+<p><b>3. Privé / public.</b></p><div class="tw"><table><tr><th></th><th>Privé</th><th>Public</th></tr><tr><td>Accès</td><td>Limité, utilisateurs autorisés</td><td>Grand nombre d'utilisateurs, accessible au public</td></tr><tr><td>Ressources</td><td>Internes</td><td>Services accessibles publiquement</td></tr><tr><td>Exemple</td><td>Réseau d'entreprise, d'université</td><td>Internet, PSTN, PLMN</td></tr></table></div></details>
+<details><summary>Exercice 2 : modem, 6200 octets/s, bande 300-3400 Hz → RSB ?</summary>
+<p><b>1.</b> W = 3400 − 300 = <b>3100 Hz</b>.<br><b>2.</b> C = 6200 octets/s × 8 = <b>49 600 bit/s</b> (le 56 kbit/s est le débit nominal, il ne sert pas au calcul).<br><b>3.</b> Shannon : 49 600 = 3100·log₂(1 + S/B) → 16 = log₂(1 + S/B) → 1 + S/B = 2¹⁶ = 65 536 → <b>S/B = 65 535</b>.<br><b>4.</b> RSB(dB) = 10·log₁₀(65 535) ≈ <b>48,16 dB</b>.</p>
+<p class="ko">Pour aller plus loin : pour atteindre 56 kbit/s, il faudrait 56 000/3100 ≈ 18,06 = log₂(1 + S/B), soit S/B ≈ 2,7·10⁵ ≈ 54,4 dB. La ligne (48,16 dB) est donc moins bonne que nécessaire.</p></details>
+<details><summary>Exercice 3 : W = 300 Hz, RSB = 3 dB → capacité ?</summary>
+<p><b>1.</b> S/B = 10<sup>3/10</sup> ≈ 1,995 (≈ 2).<br><b>2.</b> C = 300·log₂(1 + 1,995) = 300·log₂(2,995).<br><b>3.</b> log₂(2,995) = ln(2,995)/ln 2 ≈ 1,58 → C ≈ 300 × 1,58 ≈ 474 bit/s (valeur non arrondie ≈ 474,8). Réponse : <b>C ≈ 475 bit/s</b>.</p></details>
+<details><summary>Exercice 4 : affaiblissement 15 dB, Pe = 50 mW → Ps ?</summary>
+<p><b>1.</b> A<sub>dB</sub> = 10·log₁₀(Pe/Ps) → 15 = 10·log₁₀(50/Ps).<br><b>2.</b> 1,5 = log₁₀(50/Ps) → 10<sup>1,5</sup> ≈ 31,62 = 50/Ps.<br><b>3.</b> <b>Ps = 50/31,62 ≈ 1,58 mW</b>.<br><b>Vérification</b> : 10·log₁₀(50/1,58) ≈ 15 dB ✓.</p></details>
+<details><summary>Exercice 5 : Pe = 10 mW, Ps = 2,5 mW, bande passante 100 MHz</summary>
+<p><b>1. Atténuation.</b> A<sub>dB</sub> = 10·log₁₀(Pe/Ps) = 10·log₁₀(10/2,5) = 10·log₁₀(4) ≈ 10 × 0,602 = <b>6,02 dB</b> (la puissance a été divisée par 4).</p>
+<p><b>2. Impact sur la bande passante.</b> La bande passante est limitée par une atténuation maximale de 3 dB, la fréquence limite est donc celle où l'atténuation vaut 3 dB. Si à 100 MHz on mesure 6 dB, alors 6 dB &gt; 3 dB : 100 MHz est déjà hors bande, la fréquence de coupure est <b>f<sub>max</sub> &lt; 100 MHz</b> et la bande passante est <b>réduite</b>.<br><i>Illustration (hypothèse hors cours : filtre passe-bas du 1ᵉʳ ordre)</i> : 6 dB ↔ Ps/Pe = 1/4 = 1/(1 + (f/f<sub>c</sub>)²) → f<sub>c</sub> = 100/√3 ≈ 58 MHz. Sans connaître la courbe du câble, on ne peut conclure que « inférieure à 100 MHz ».</p>
+<p><b>3. Relation 3 dB ↔ qualité.</b> À −3 dB, Ps/Pe = 0,5 : A<sub>dB</sub> = 10·log₁₀(0,5) ≈ −3 dB (soit 3 dB d'atténuation). Le signal a perdu la moitié de sa puissance mais reste <b>exploitable</b> et reconnaissable à l'arrivée. Cette fréquence est la <b>fréquence de coupure</b>. Dans la bande (entre f₁ et f₂, <b>BW = f₂ − f₁</b>) les signaux passent correctement ; au-delà, ils sont trop affaiblis ou déformés (distorsions), la reconstruction se dégrade et le TEB augmente. Plus la bande est large, plus le support transporte d'informations par unité de temps.</p></details>
 <p style="color:var(--mu);margin-top:40px">Prochain chapitre : Organismes de normalisation pour les télécommunications.</p>
 </main>
 <script>
