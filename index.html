@@ -1,232 +1,286 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="utf-8">
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Révision – Introduction aux Télécommunications</title>
+<title>Introduction aux Télécommunications — Fiches</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-:root{--bg:#f6f8fc;--card:#fff;--tx:#1b2433;--mu:#5b6678;--ac:#2563eb;--ac2:#e11d48;--bd:#dde3ee;--soft:#e8f0ff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1624;--card:#172033;--tx:#e8edf7;--mu:#9aa7bd;--ac:#6ea0ff;--ac2:#ff6b8b;--bd:#27334b;--soft:#1d2b4a}}
-:root[data-theme="dark"]{--bg:#0f1624;--card:#172033;--tx:#e8edf7;--mu:#9aa7bd;--ac:#6ea0ff;--ac2:#ff6b8b;--bd:#27334b;--soft:#1d2b4a}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--card);border-bottom:1px solid var(--bd);display:flex;gap:4px;padding:8px 12px;overflow-x:auto;white-space:nowrap}
-nav a{color:var(--mu);text-decoration:none;padding:6px 12px;border-radius:99px;font-size:14px}nav a:hover{background:var(--soft);color:var(--ac)}
-nav button{margin-left:auto;border:1px solid var(--bd);background:var(--bg);color:var(--tx);border-radius:99px;padding:6px 12px;cursor:pointer}
-main{max-width:960px;margin:auto;padding:24px 16px 60px}
-header h1{font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.15;margin:.3em 0}header p{color:var(--mu)}
-h2{margin-top:2.4em;font-size:1.6rem;border-left:5px solid var(--ac);padding-left:12px}h3{color:var(--ac);margin-top:1.6em}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px 18px;margin:12px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}.grid .card{margin:0}
-.tag{display:inline-block;background:var(--soft);color:var(--ac);border-radius:6px;padding:0 8px;font-size:.8rem;font-weight:600}
-.key{border-left:4px solid var(--ac2);background:var(--card);padding:10px 16px;border-radius:0 12px 12px 0;margin:12px 0}
-.ok{color:#16a34a}.ko{color:var(--ac2)}
-.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;background:var(--card)}th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;font-size:.95rem}th{background:var(--soft)}
-svg{max-width:100%;height:auto;background:var(--card);border:1px solid var(--bd);border-radius:14px}svg text{fill:var(--tx);font:12px system-ui}
-.n{stroke:var(--ac);fill:var(--soft);stroke-width:2}.l{stroke:var(--mu);stroke-width:2;fill:none}.h{fill:var(--ac);stroke:none}
-details{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 16px;margin:8px 0}summary{cursor:pointer;font-weight:600}
-code{background:var(--soft);padding:1px 6px;border-radius:5px}
-</style></head><body>
-<nav><a href="#c1">Réseaux</a><a href="#topo">Topologies</a><a href="#class">Classifications</a><a href="#arch">Architectures</a><a href="#eq">Équipements</a><a href="#sup">Supports</a><a href="#perf">Performances</a><a href="#test">Auto-test</a><a href="#td">TD corrigé</a><button id="t">Thème</button></nav>
+:root{--bg:#dcebfa;--grid:rgba(20,75,155,.16);--grid2:rgba(20,75,155,.07);--ink:#0f3263;--mut:#42648f;--line:#1b4f9c;--card:rgba(255,255,255,.55);--acc:#d9480f;--hd:rgba(220,235,250,.93);--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--sans:"Space Grotesk",system-ui,sans-serif;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme=dark]{--bg:#0a2859;--grid:rgba(160,205,255,.17);--grid2:rgba(160,205,255,.07);--ink:#e8f2ff;--mut:#a9c4ea;--line:#7db4f5;--card:rgba(6,30,70,.55);--acc:#ffd166;--hd:rgba(10,40,89,.93);color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0a2859;--grid:rgba(160,205,255,.17);--grid2:rgba(160,205,255,.07);--ink:#e8f2ff;--mut:#a9c4ea;--line:#7db4f5;--card:rgba(6,30,70,.55);--acc:#ffd166;--hd:rgba(10,40,89,.93);color-scheme:dark}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 var(--sans);color:var(--ink);background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),linear-gradient(var(--grid2) 1px,transparent 1px),linear-gradient(90deg,var(--grid2) 1px,transparent 1px);background-size:100px 100px,100px 100px,20px 20px,20px 20px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--hd);backdrop-filter:blur(6px);border-bottom:2px solid var(--line)}
+.bar{max-width:1000px;margin:auto;padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.brand{font:600 13px var(--mono);letter-spacing:.08em;text-transform:uppercase;flex:1;min-width:180px}
+.brand small{display:block;color:var(--mut);font-weight:400;letter-spacing:0;text-transform:none}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{font:600 12px var(--mono);color:var(--ink);text-decoration:none;border:1.5px solid var(--line);padding:6px 10px;border-radius:2px}
+nav a.on{background:var(--ink);color:var(--bg)}
+#tg{font:600 12px var(--mono);background:none;color:var(--ink);border:1.5px dashed var(--line);padding:6px 10px;cursor:pointer;border-radius:2px}
+main{max-width:1000px;margin:auto;padding:24px 16px 60px}
+.tb{border:2px solid var(--line);display:grid;grid-template-columns:1fr auto;margin-bottom:26px;background:var(--card)}
+.tb div{padding:12px 16px}.tb div+div{border-left:2px solid var(--line);font:12px var(--mono);color:var(--mut)}
+.tb h1{margin:0;font-size:clamp(22px,4.5vw,34px);line-height:1.15}
+.tb p{margin:4px 0 0;color:var(--mut)}
+h2{font-size:22px;margin:40px 0 6px;display:flex;gap:10px;align-items:baseline}
+h2 i{font:600 12px var(--mono);font-style:normal;color:var(--acc);border:1.5px solid var(--acc);padding:1px 6px}
+h3{font:600 13px var(--mono);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;color:var(--acc)}
+p{margin:6px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
+.card{border:1.5px solid var(--line);background:var(--card);padding:12px 14px;position:relative}
+.card::before{content:"";position:absolute;top:-1.5px;left:-1.5px;width:10px;height:10px;border-top:3px solid var(--acc);border-left:3px solid var(--acc)}
+.card ul{margin:4px 0;padding-left:18px}
+.fig{border:1.5px solid var(--line);background:var(--card);padding:10px;margin:14px 0}
+.fig svg{width:100%;height:auto;display:block}
+.fig figcaption,.cap{font:12px var(--mono);color:var(--mut);margin-top:6px}
+svg{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+svg text{fill:var(--ink);stroke:none;font:11px var(--mono)}
+svg .n{fill:var(--bg)}svg .a{stroke:var(--acc)}svg .fa{fill:var(--acc);stroke:none}svg .d{stroke-dasharray:5 4}svg .m{fill:var(--mut);}svg .b{fill:var(--card)}
+.sc{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card)}
+th,td{border:1.5px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{font:600 12px var(--mono);text-transform:uppercase;background:var(--grid2)}
+.eq{font:600 15px var(--mono);border:1.5px dashed var(--acc);padding:8px 12px;margin:8px 0;display:block;overflow-x:auto}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0}
+.flow span{border:1.5px solid var(--line);background:var(--card);padding:5px 9px;font-size:13px}
+.flow b{color:var(--acc)}
+details{border:1.5px solid var(--line);background:var(--card);margin:8px 0;padding:8px 12px}
+summary{cursor:pointer;font-weight:600}
+input{font:14px var(--mono);width:110px;background:var(--bg);color:var(--ink);border:1.5px solid var(--line);padding:4px 6px}
+.k{color:var(--acc);font-weight:600}
+footer{text-align:center;font:12px var(--mono);color:var(--mut);padding:20px}
+@media(max-width:560px){.tb{grid-template-columns:1fr}.tb div+div{border-left:0;border-top:2px solid var(--line)}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+<div class="brand">Introduction aux Télécommunications<small>Iset’Com · Fadwa Saada</small></div>
+<nav><a href="#ch1">1 Réseaux</a><a href="#ch2">2 Composants</a><a href="#ch3">3 Normalisation</a><a href="#ch4">4 Téléphonie</a></nav>
+<button id="tg" type="button">☾ Nuit</button>
+</div></header>
 <main>
-<header><span class="tag">Iset'Com · Fadwa Saada</span><h1>Introduction aux Télécommunications : révision</h1>
-<p>Chapitre 1 (grands principes, topologies, classifications) et Chapitre 2 (composants et supports de transmission), organisés pour réviser vite, avec tout ce qu’il faut pour résoudre le TD (section 9).</p></header>
+<div class="tb"><div><h1>Fiches de révision</h1><p>Chapitres 1 à 4 · schémas explicatifs</p></div><div>PLAN N° TEL-01<br>ÉCH. 1:1<br>ISET’COM</div></div>
 
-<h2 id="c1">1. Grands principes des réseaux</h2>
-<div class="key"><b>Réseau</b> : ensemble de matériels et de logiciels permettant à des équipements de communiquer entre eux. <b>Objectif</b> : partager des ressources matérielles (disques, imprimantes) et logicielles (fichiers, applications).</div>
+<section id="ch1">
+<h2><i>CH.1</i>Les réseaux</h2>
+<p>Un réseau est un <span class="k">ensemble de matériels et de logiciels</span> permettant à des équipements de communiquer. Son but : partager des ressources matérielles (disques, imprimantes) et logicielles (fichiers, applications).</p>
 <div class="grid">
-<div class="card"><b>💸 Réduire les coûts</b><br>Une imprimante partagée au lieu d'une par utilisateur.</div>
-<div class="card"><b>🛡️ Fiabilité</b><br>Données et traitements dupliqués : si une machine tombe, une autre prend le relais.</div>
-<div class="card"><b>💬 Communication</b><br>E-mail, visioconférence, chat, téléphonie sur IP.</div>
-<div class="card"><b>🛒 Services</b><br>E-commerce, accès à distance (banque, bibliothèques), divertissement.</div></div>
-<div class="card"><b>Plus de détails</b><ul><li>Partage de fichiers, d’applications (compilation, SGBD) et de ressources matérielles (imprimante, disque, processeur) ; téléchargement.</li>
-<li>Transfert de données (réseaux informatiques), de la parole (réseaux téléphoniques), de la parole + vidéo + données (RNIS ou IP).</li>
-<li>Les grands ordinateurs sont ~10× plus rapides mais ~1000× plus chers : d’où l’intérêt de partager.</li>
-<li>Accès distant : paiement de factures, solde, recherche d’informations, journaux et bibliothèques numériques, newsgroups, chat, poste-à-poste, jeux interactifs, vidéo à la carte, e-commerce.</li>
-<li>Les réseaux sont hétérogènes : architectures et supports variés (filaire → sans fil), portées du PAN au WAN. Techniques de télécoms : filaires, radio, optiques, satellitaires.</li></ul></div>
-<h3>Télécommunications</h3>
-<p>Transfert fiable d'information (texte, image, audio, vidéo) entre entités communicantes. Il faut : des données compréhensibles par A et B, un <b>support/lien</b>, une <b>adaptation entité-support</b> et un <b>protocole</b> d'échange. Les télécoms ont besoin des réseaux pour véhiculer l'information.</p>
+<div class="card"><h3>Ce qu’il apporte</h3><ul><li>Réduire les coûts (une imprimante pour tous)</li><li>Augmenter la fiabilité (données dupliquées)</li><li>Communiquer : e-mail, visioconférence</li><li>Accès distant, e-commerce, divertissement</li></ul></div>
+<div class="card"><h3>Télécommunications</h3><p>Transfert fiable d’information entre entités : données compréhensibles par A et B, un support (lien), une adaptation entité-support et un <span class="k">protocole</span> d’échange.</p></div>
+</div>
 
-<h2 id="topo">2. Topologies de réseaux</h2>
-<p>La topologie décrit la manière dont les équipements sont organisés et interconnectés.</p>
-<svg viewBox="0 0 900 330" role="img" aria-label="Topologies : bus, étoile, anneau, arbre, maille">
-<text x="60" y="22" font-weight="700">Bus</text><line class="l" x1="20" x2="170" y1="120" y2="120"/>
-<g class="n"><circle cx="45" cy="70" r="14"/><circle cx="95" cy="70" r="14"/><circle cx="145" cy="70" r="14"/><circle cx="70" cy="170" r="14"/><circle cx="120" cy="170" r="14"/></g>
-<path class="l" d="M45 84V120M95 84V120M145 84V120M70 156V120M120 156V120"/><rect x="14" y="112" width="6" height="16" class="h"/><rect x="170" y="112" width="6" height="16" class="h"/>
-<text x="20" y="215">bouchons aux extrémités</text>
-<text x="260" y="22" font-weight="700">Étoile</text><path class="l" d="M270 110L230 60M270 110L320 60M270 110L225 160M270 110L320 160"/>
-<rect class="n" x="255" y="95" width="30" height="30"/><g class="n"><circle cx="230" cy="60" r="14"/><circle cx="320" cy="60" r="14"/><circle cx="225" cy="160" r="14"/><circle cx="320" cy="160" r="14"/></g><text x="245" y="215">hub / switch central</text>
-<text x="440" y="22" font-weight="700">Anneau</text><circle class="l" cx="470" cy="110" r="50"/><g class="n"><circle cx="470" cy="60" r="14"/><circle cx="518" cy="95" r="14"/><circle cx="500" cy="152" r="14"/><circle cx="440" cy="152" r="14"/><circle cx="422" cy="95" r="14"/></g><text x="430" y="215">boucle fermée</text>
-<text x="640" y="22" font-weight="700">Arbre</text><path class="l" d="M700 50L660 100M700 50L740 100M660 100L635 160M660 100L685 160M740 100L715 160M740 100L765 160"/><g class="n"><rect x="685" y="36" width="30" height="28"/><rect x="645" y="86" width="30" height="28"/><rect x="725" y="86" width="30" height="28"/><circle cx="635" cy="160" r="12"/><circle cx="685" cy="160" r="12"/><circle cx="715" cy="160" r="12"/><circle cx="765" cy="160" r="12"/></g><text x="650" y="215">hiérarchie de switchs</text>
-<text x="60" y="262" font-weight="700">Maille</text><path class="l" d="M110 250L200 250M110 250L155 320M200 250L155 320M110 250L245 320M200 250L245 320"/><g class="n"><circle cx="110" cy="250" r="12"/><circle cx="200" cy="250" r="12"/><circle cx="155" cy="318" r="12"/><circle cx="245" cy="318" r="12"/></g>
-<text x="300" y="285">tous reliés entre eux : très résistant, mais beaucoup de liaisons</text></svg>
-<div class="tw"><table><tr><th>Topologie</th><th>Avantage</th><th>Inconvénient</th></tr>
-<tr><td><b>Bus</b></td><td>Simple, peu coûteux, peu de câbles</td><td>Rupture du câble = tout le réseau en panne</td></tr>
-<tr><td><b>Étoile</b></td><td>Un nœud en panne n'affecte pas les autres</td><td>Câblage long et coûteux ; panne du hub = tous déconnectés</td></tr>
-<tr><td><b>Anneau</b></td><td>Chaque nœud communique à son tour (boucle fermée)</td><td>En pratique relié à un répartiteur</td></tr>
-<tr><td><b>Arbre</b></td><td>Étoile hiérarchisée</td><td>Un seul chemin possible : liaison coupée = dialogue impossible</td></tr>
-<tr><td><b>Maille</b></td><td>Plusieurs itinéraires, tolère les ruptures (Internet, armée)</td><td>Nombre de liaisons très élevé</td></tr></table></div>
+<h2><i>1.1</i>Topologies</h2>
+<p>La topologie décrit comment les équipements sont organisés et interconnectés.</p>
+<figure class="fig sc"><svg id="topo" viewBox="0 0 720 150" style="min-width:560px"></svg><figcaption>FIG. 1.1 — Bus, étoile, anneau, arbre, maille</figcaption></figure>
+<div class="sc"><table><tr><th>Topologie</th><th>Principe</th><th>Avantage</th><th>Inconvénient</th></tr>
+<tr><td>Bus</td><td>Un câble principal, bouchons (résistances) aux extrémités</td><td>Simple, peu coûteux, peu de câbles</td><td>Câble rompu = réseau en panne</td></tr>
+<tr><td>Étoile</td><td>Chaque nœud relié à un hub</td><td>Une panne de nœud n’affecte pas les autres</td><td>Coûteux ; panne du hub = tout coupé</td></tr>
+<tr><td>Anneau</td><td>Boucle fermée, chacun parle à son tour (via un répartiteur)</td><td>Accès ordonné</td><td>—</td></tr>
+<tr><td>Arbre</td><td>Étoile hiérarchisée de commutateurs</td><td>Extensible</td><td>Un seul chemin : rupture = dialogue coupé</td></tr>
+<tr><td>Maille</td><td>Plusieurs liaisons point à point</td><td>Itinéraires multiples (Internet, armée)</td><td>Nombre de liaisons très élevé</td></tr></table></div>
+<p class="cap">Hub = équipement actif qui répète les données vers tous les ports.</p>
 
-<div class="key"><b>Anneau</b> : les nœuds sont en réalité reliés à un <b>répartiteur</b> (il organise et distribue les connexions), alors que le <b>hub</b> est un équipement actif qui répète les données vers plusieurs ports. <b>Bus</b> : chaque PC se branche par un connecteur spécial, une résistance (bouchon) à chaque extrémité évite les signaux parasites. <b>Étoile</b> : le contrôleur central est un élément cher. <b>Maille</b> : évolution de l’étoile (liaisons point à point), l’information suit des itinéraires divers sous le contrôle de superviseurs de réseau ou par routage réparti.</div>
-<h2 id="class">3. Classifications des réseaux</h2>
-<h3>Selon la portée</h3>
+<h2><i>1.2</i>Portée : PAN, LAN, MAN, WAN</h2>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+<figure class="fig" style="margin:0"><svg viewBox="0 0 360 230"><ellipse cx="180" cy="115" rx="170" ry="108"/><ellipse cx="180" cy="125" rx="120" ry="75"/><ellipse cx="180" cy="135" rx="72" ry="45"/><ellipse class="a" cx="180" cy="143" rx="30" ry="18"/><text x="180" y="20" text-anchor="middle">WAN</text><text x="180" y="64" text-anchor="middle">MAN</text><text x="180" y="108" text-anchor="middle">LAN</text><text x="180" y="146" text-anchor="middle">PAN</text></svg><figcaption>FIG. 1.2 — Zones de portée</figcaption></figure>
+<div class="sc"><table><tr><th>Type</th><th>Portée</th><th>Notes</th></tr>
+<tr><td>PAN</td><td>Quelques mètres</td><td>Écouteurs Bluetooth–smartphone</td></tr>
+<tr><td>LAN</td><td>≤ 1 km, ~100 machines</td><td>Privé ; 10 à 100 Mb/s</td></tr>
+<tr><td>MAN</td><td>10 à 25 km</td><td>Plusieurs LAN ; câble coaxial</td></tr>
+<tr><td>WAN</td><td>Centaines de km</td><td>Public ou privé ; ex. Internet</td></tr></table></div></div>
+
+<h2><i>1.3</i>Mode d’envoi</h2>
+<figure class="fig sc"><svg id="cast" viewBox="0 0 720 150" style="min-width:560px"></svg><figcaption>FIG. 1.3 — Unicast : 1 destinataire · Multicast : un groupe · Broadcast : tous</figcaption></figure>
+
+<h2><i>1.4</i>Type d’information</h2>
 <div class="grid">
-<div class="card"><span class="tag">PAN</span> <b>Personnel</b><br>Écouteurs Bluetooth ↔ smartphone.</div>
-<div class="card"><span class="tag">LAN</span> <b>Local</b><br>Privé, ≤ ~100 machines, ≤ 1 km, 10 à 100 Mb/s.</div>
-<div class="card"><span class="tag">MAN</span> <b>Métropolitain</b><br>Plusieurs LAN, 10 à 25 km, souvent câble coaxial.</div>
-<div class="card"><span class="tag">WAN</span> <b>Étendu</b><br>Pays ou groupe de pays, centaines de km, public ou privé (Internet).</div></div>
-<h3>Selon le mode d'envoi</h3>
-<svg viewBox="0 0 800 130" role="img" aria-label="Unicast, multicast, broadcast">
-<g class="n"><circle cx="40" cy="65" r="14"/><circle cx="270" cy="30" r="12"/><circle cx="270" cy="65" r="12"/><circle cx="270" cy="100" r="12"/></g><path class="l" d="M54 65L258 65" stroke="#e11d48"/><text x="90" y="120">Unicast : 1 → 1</text>
-<g class="n"><circle cx="340" cy="65" r="14"/><circle cx="560" cy="30" r="12"/><circle cx="560" cy="65" r="12"/><circle cx="560" cy="100" r="12"/></g><path class="l" d="M354 65L548 30M354 65L548 65" stroke="#e11d48"/><text x="380" y="120">Multicast : 1 → groupe</text>
-<g class="n"><circle cx="620" cy="65" r="14"/><circle cx="780" cy="30" r="12"/><circle cx="780" cy="65" r="12"/><circle cx="780" cy="100" r="12"/></g><path class="l" d="M634 65L768 30M634 65L768 65M634 65L768 100" stroke="#e11d48"/><text x="650" y="120">Broadcast : 1 → tous</text></svg>
-<h3>Selon le type d'informations</h3>
-<div class="grid"><div class="card"><b>Télécommunications</b><br>Voix (RTC, GSM/DCS). Les plus anciens. <i>Publics</i> (PSTN, PDN, PLMN) ou <i>privés</i> (entreprise, université).</div>
-<div class="card"><b>Télédiffusion</b><br>TV/radio vers beaucoup de gens, liaison <b>unilatérale</b>. AM (ondes longues, moyennes, courtes), FM 87,5–108 MHz.</div>
-<div class="card"><b>Téléinformatique</b><br>Échange de données numériques et partage de ressources. Convergence vers données + voix + vidéo.</div></div>
-<div class="tw"><table><tr><th>Situation</th><th>Réponse</th></tr><tr><td>Écouteurs Bluetooth</td><td>PAN</td></tr><tr><td>Salle informatique / ville / Internet</td><td>LAN / MAN / WAN</td></tr><tr><td>Appel téléphonique classique</td><td>Commutation de circuits</td></tr><tr><td>Navigation internet</td><td>Commutation de paquets</td></tr><tr><td>TV parabole / TNT / câble</td><td>DVB-S / DVB-T / DVB-C</td></tr><tr><td>2G / données sur GSM / 3G</td><td>GSM / GPRS / UMTS</td></tr></table></div>
-<div class="card"><b>Compléments MAN / WAN</b> : un MAN demande des matériels particuliers d’interconnexion qui protègent aussi l’accès de chaque réseau. Un WAN est multi-services, formé de LAN interconnectés ; ses liaisons utilisent du matériel moins sophistiqué (raisons financières), donc le débit est un peu pénalisé.</div>
-<h3>Réseaux publics et privés</h3>
-<div class="tw"><table><tr><th></th><th>Réseau public</th><th>Réseau privé</th></tr>
-<tr><td><b>Accès</b></td><td>Services accessibles à tous, grand nombre d’utilisateurs</td><td>Réservé à un groupe déterminé ou une organisation, accès limité aux utilisateurs autorisés</td></tr>
-<tr><td><b>Exemples</b></td><td>Internet, PSTN (téléphone), PDN (données), PLMN (GSM) ; opérateurs mobiles, satellite, télédiffusion</td><td>Réseau d’entreprise (employés → serveurs et fichiers internes), réseau d’université (étudiants, enseignants)</td></tr>
-<tr><td><b>Ressources</b></td><td>Services accessibles publiquement</td><td>Ressources internes</td></tr></table></div>
-<h3>Télédiffusion : fréquences</h3>
-<div class="tw"><table><tr><th>Service</th><th>Bande</th></tr>
-<tr><td>AM ondes longues</td><td>148,5 – 283,5 kHz</td></tr><tr><td>AM ondes moyennes</td><td>525,5 – 1606,5 kHz</td></tr><tr><td>AM ondes courtes</td><td>3,4 – 26,1 MHz</td></tr>
-<tr><td>FM (zones urbaines/locales)</td><td>87,5 – 108 MHz</td></tr>
-<tr><td>TV analogique</td><td>Bande III : 174-230 MHz · Bande IV : 470-582 MHz · Bande V : 582-860 MHz</td></tr>
-<tr><td>Radio numérique TDAB</td><td>~1500 MHz (nouvelles modulations numériques aussi dans les anciennes bandes AM)</td></tr></table></div>
-<p>Télédiffusion : liaison <b>unilatérale</b>, réseaux des câblo-opérateurs et satellites (TDF, Eutelsat, Numericable). Gestion des fréquences très prudente, évolutions lentes. Réception de la TV numérique : DVB-S (satellite), DVB-T (TNT), DVB-C (câble). Télécoms : réseaux terrestres GSM → GPRS (données) → UMTS (3G) ; satellitaire avec la technologie <b>VSAT</b> (petites stations terriennes). Les télécoms utilisent des bandes différentes selon service, distance et support (UHF, SHF, EHF…).</p>
-<h3>Selon la commutation</h3>
+<div class="card"><h3>Télécommunications</h3><p>Voix entre individus : RTC, GSM/DCS. Réseaux <b>publics</b> (PSTN, PDN, PLMN) ou <b>privés</b> (entreprise, université).</p></div>
+<div class="card"><h3>Télédiffusion</h3><p>Programmes TV/radio vers beaucoup de monde, liaison <b>unilatérale</b>. FM : 87,5–108 MHz ; ondes moyennes : 525,5–1606,5 kHz.</p></div>
+<div class="card"><h3>Téléinformatique</h3><p>Échange de données numériques et partage de ressources ; tend à intégrer voix et vidéo.</p></div>
+</div>
+
+<h2><i>1.5</i>Commutation</h2>
+<figure class="fig sc"><svg viewBox="0 0 720 170" style="min-width:560px">
+<text x="10" y="16">CIRCUIT : chemin dédié, occupé même au repos</text>
+<g id="c1"></g>
+<text x="380" y="16">PAQUETS : découpage, en-tête, routes variables</text>
+<g id="c2"></g></svg><figcaption>FIG. 1.4 — Circuit vs paquets</figcaption></figure>
 <div class="grid">
-<div class="card"><b>Circuits</b> (RTC, RNIS, GSM)<br>Circuit physique dédié établi avant l'échange. Adapté à la voix. <span class="ko">Occupé même inutilisé.</span></div>
-<div class="card"><b>Paquets</b> (informatique)<br>Données découpées ; chaque paquet a un <b>en-tête</b> (contenu + destination) pour être aiguillé.</div>
-<div class="card"><b>Cellules</b> (ATM)<br>Taille fixe <b>53 octets</b> = 5 d'en-tête + 48 de données. Chemin virtuel, qualité de service.</div></div>
-<h3>Selon le mode de communication</h3>
+<div class="card"><h3>Circuit</h3><p>RTC, RNIS, GSM. Adapté à la voix.</p></div>
+<div class="card"><h3>Paquets</h3><p>Données découpées ; chaque paquet porte destination dans son en-tête.</p></div>
+<div class="card"><h3>Cellules (ATM)</h3><p>Taille fixe <b>53 octets</b> = 5 d’en-tête + 48 de données ; chemin virtuel ; qualité de service.</p></div>
+</div>
+
+<h2><i>1.6</i>Mode connecté ou non</h2>
+<div class="flow"><span>Établissement</span><b>→</b><span>Transfert</span><b>→</b><span>Coupure</span><span style="border-style:dashed">mode connecté : contrôle de flux, authentification</span></div>
+<p>Mode <b>non connecté</b> : pas de négociation, chaque paquet (datagramme) est indépendant et porte les adresses complètes — comme une lettre postale.</p>
+
+<h2><i>1.7</i>Architectures</h2>
 <div class="grid">
-<div class="card"><b>Mode connecté</b><br>3 phases : <b>établissement → transfert → coupure</b>. Contrôle de flux, authentification. Ressources mobilisées parfois inutilisées.</div>
-<div class="card"><b>Mode non connecté</b><br>Pas de négociation, comme une lettre postale. Paquets = <b>datagrammes</b> indépendants, avec adresses complètes. Bon pour messages courts.</div></div>
+<div class="card"><h3>Client/serveur</h3><p>Ressources centralisées, accès sécurisé, services, souplesse.</p></div>
+<div class="card"><h3>Poste à poste</h3><p>Chaque machine est un peu client, un peu serveur ; performances et sécurité dégradées.</p></div>
+<div class="card"><h3>Centralisée</h3><p>Site unique, terminaux légers, facile à administrer.</p></div>
+<div class="card"><h3>Distribuée</h3><p>Traitement réparti sur plusieurs équipements distants.</p></div>
+</div>
+<details><summary>Identifier la technologie</summary><div class="sc"><table><tr><th>Situation</th><th>Réponse</th></tr><tr><td>Écouteurs Bluetooth</td><td>PAN</td></tr><tr><td>Salle informatique</td><td>LAN</td></tr><tr><td>Réseau d’une ville</td><td>MAN</td></tr><tr><td>Internet</td><td>WAN</td></tr><tr><td>Appel classique / navigation web</td><td>Circuits / paquets</td></tr><tr><td>Parabole / TNT / câble</td><td>DVB-S / DVB-T / DVB-C</td></tr><tr><td>2G / données sur GSM / 3G</td><td>GSM / GPRS / UMTS</td></tr></table></div></details>
+</section>
 
-<div class="card"><b>Mode connecté</b> : un terminal peut gérer plusieurs connexions en parallèle, distinguées par leur <b>numéro de voie logique</b>. <b>Non connecté</b> : chaque datagramme porte les adresses complètes de l’expéditeur et du destinataire.</div>
-<h2 id="arch">4. Architectures</h2>
-<svg viewBox="0 0 800 190" role="img" aria-label="Client/serveur et poste à poste">
-<text x="130" y="20" font-weight="700">Client / Serveur</text><rect class="n" x="110" y="75" width="60" height="40"/><text x="118" y="100">Serveur</text>
-<g class="n"><circle cx="40" cy="50" r="16"/><circle cx="40" cy="140" r="16"/><circle cx="240" cy="50" r="16"/><circle cx="240" cy="140" r="16"/></g><path class="l" d="M54 58L110 85M54 132L110 105M226 58L170 85M226 132L170 105"/><text x="50" y="180">Clients</text>
-<text x="560" y="20" font-weight="700">Poste à poste (P2P)</text><g class="n"><circle cx="500" cy="60" r="18"/><circle cx="620" cy="60" r="18"/><circle cx="500" cy="140" r="18"/><circle cx="620" cy="140" r="18"/></g><path class="l" d="M518 60L602 60M500 78V122M620 78V122M518 140L602 140M515 73L607 127M605 73L513 127"/><text x="470" y="180">chacun est client ET serveur</text></svg>
+<section id="ch2" hidden>
+<h2><i>CH.2</i>Composants et supports</h2>
 <div class="grid">
-<div class="card"><b>Client/serveur</b><br>Centralisation et partage, accès sécurisé, gestion centralisée, transparence de localisation, souplesse.</div>
-<div class="card"><b>Poste à poste</b><br>Chacun partage ses ressources. <span class="ko">Performances et sécurité dégradées.</span></div>
-<div class="card"><b>Centralisé</b><br>Un site unique, terminaux légers, facile à administrer.</div>
-<div class="card"><b>Distribué</b><br>Traitement réparti sur plusieurs équipements distants ; convergence informatique-télécoms.</div></div>
+<div class="card"><h3>Matériels</h3><ul><li>Terminaux : PC, smartphones, tablettes</li><li>Ressources : imprimantes, serveurs</li><li>Câbles, équipements d’interconnexion</li></ul></div>
+<div class="card"><h3>Logiciels</h3><ul><li>Système d’exploitation réseau (Windows Server, Linux)</li><li>Pilotes (carte réseau = matériel, pilote = logiciel)</li><li>Logiciels serveur, applicatifs, d’administration</li></ul></div>
+</div>
+<h2><i>2.1</i>Équipements d’interconnexion</h2>
+<figure class="fig sc"><svg viewBox="0 0 720 150" style="min-width:600px">
+<g id="eq"></g></svg><figcaption>FIG. 2.1 — Du signal brut aux réseaux différents : portée croissante du rôle</figcaption></figure>
+<div class="sc"><table><tr><th>Équipement</th><th>Rôle</th></tr><tr><td>Répéteur</td><td>Régénérer/amplifier le signal (contre l’atténuation)</td></tr><tr><td>Hub</td><td>Reçoit sur un port, diffuse vers tous les autres</td></tr><tr><td>Pont</td><td>Relier deux segments ; filtre les trames</td></tr><tr><td>Switch</td><td>Relier des équipements d’un LAN ; trame vers le bon port</td></tr><tr><td>Routeur</td><td>Relier des réseaux différents ; choisit le meilleur chemin</td></tr><tr><td>Passerelle</td><td>Relier réseaux/protocoles différents</td></tr><tr><td>Modem · Multiplexeur</td><td>Liaison à grande distance · plusieurs flux sur une même voie</td></tr><tr><td>Point d’accès</td><td>Connexion Wi-Fi</td></tr></table></div>
 
-<h2 id="eq">5. Composants et équipements (Chap. 2)</h2>
+<h2><i>2.2</i>Supports de transmission</h2>
+<figure class="fig sc"><svg viewBox="0 0 720 160" style="min-width:560px">
+<g transform="translate(20,0)"><text x="0" y="16">PAIRE TORSADÉE</text><path d="M0 70 q15 -28 30 0 t30 0 t30 0 t30 0 t30 0"/><path class="a" d="M0 70 q15 28 30 0 t30 0 t30 0 t30 0 t30 0"/><text x="0" y="140" class="m">cuivre · RJ11/RJ45</text></g>
+<g transform="translate(260,0)"><text x="0" y="16">CÂBLE COAXIAL</text><circle cx="60" cy="72" r="46"/><circle cx="60" cy="72" r="32" class="d"/><circle cx="60" cy="72" r="8" class="a"/><text x="112" y="50" class="m">blindage</text><text x="112" y="76" class="m">isolant</text><text x="112" y="102" class="m">âme</text><text x="0" y="148" class="m">connecteur BNC</text></g>
+<g transform="translate(500,0)"><text x="0" y="16">FIBRE OPTIQUE</text><rect x="0" y="44" width="200" height="56" rx="3"/><rect x="0" y="62" width="200" height="20" class="b"/><path class="a" d="M0 72 L40 66 L80 78 L120 66 L160 78 L200 72"/><text x="4" y="40" class="m">gaine</text><text x="4" y="76" class="m">cœur</text><text x="0" y="128" class="m">lumière guidée par réfraction</text></g></svg><figcaption>FIG. 2.2 — Supports métalliques et optique</figcaption></figure>
 <div class="grid">
-<div class="card"><b>🖥️ Matériels</b><br>Terminaux (PC, smartphones, tablettes, Smart TV), ressources partagées (imprimantes, vidéoprojecteur, serveurs de stockage/calcul), câbles (RJ45, USB, optiques), équipements d'interconnexion (hub, répéteur, switch, pont, passerelle, routeur, stations de base, points d'accès), réseaux externes.</div>
-<div class="card"><b>💾 Logiciels</b><br><b>Système d'exploitation</b> (réseau : mode serveur, ex. Windows Server, UNIX/Linux), <b>pilotes</b>, <b>logiciels</b> (serveur, application, administration).</div></div>
-<div class="key"><b>Carte réseau</b> = matériel ; <b>pilote réseau</b> = logiciel qui permet à l'OS de contrôler ce matériel.</div>
-<div class="card"><b>Logiciels du réseau (détail)</b><ul><li><b>OS local</b> : satisfait les besoins de son utilisateur. <b>OS réseau</b> : traite les demandes de service de plusieurs clients, fait fonctionner la machine en mode serveur (Windows Server, UNIX/Linux).</li><li><b>Logiciels serveur</b> : gèrent les tâches du réseau (accès aux ressources partagées, authentification/identification des utilisateurs).</li><li><b>Logiciels d'application</b> : logiciels classiques connectés à un serveur (ex. ajouter un format Internet à un PowerPoint, télécharger des données distantes dans un tableur).</li><li><b>Logiciels d'administration</b> : l'administrateur organise le réseau et l'optimise en analysant ses performances.</li></ul></div>
-<div class="tw"><table><tr><th>Équipement</th><th>Rôle principal</th></tr>
-<tr><td><b>Répéteur</b></td><td>Régénère/amplifie le signal (contre l'atténuation), prolonge la distance</td></tr>
-<tr><td><b>Hub (concentrateur)</b></td><td>Reçoit sur un port et <b>diffuse vers tous</b> les autres</td></tr>
-<tr><td><b>Pont (bridge)</b></td><td>Relie deux segments d'un même réseau ; filtre les trames dont la destination n'existe pas</td></tr>
-<tr><td><b>Switch (commutateur)</b></td><td>Relie plusieurs équipements d'un LAN ; envoie la trame <b>au port approprié</b></td></tr>
-<tr><td><b>Routeur</b></td><td>Relie plusieurs réseaux différents ; choisit le meilleur chemin</td></tr>
-<tr><td><b>Passerelle (gateway)</b></td><td>Relie réseaux/systèmes de protocoles différents ; passerelle par défaut si adresse inconnue ; peut être un ordinateur reliant les 2 réseaux ou un logiciel entre protocoles différents</td></tr>
-<tr><td><b>Point d'accès</b></td><td>Connecte des équipements en Wi-Fi</td></tr>
-<tr><td><b>Modem</b></td><td>Communication entre terminaux distants (réseau téléphonique, ligne dédiée)</td></tr>
-<tr><td><b>Multiplexeur</b></td><td>Combine plusieurs liaisons/informations (données, son, vidéo) sur une même voie</td></tr></table></div>
-<svg viewBox="0 0 800 120" role="img" aria-label="Chaîne Internet, routeur, switch, terminaux">
-<text x="20" y="22" font-weight="700">Exemple du cours : réseau d'entreprise</text>
-<ellipse class="n" cx="70" cy="70" rx="45" ry="22"/><text x="52" y="74">Internet</text><rect class="n" x="170" y="50" width="70" height="40"/><text x="182" y="74">Routeur</text><rect class="n" x="310" y="50" width="70" height="40"/><text x="324" y="74">Switch</text>
-<path class="l" d="M115 70H170M240 70H310M380 60L470 30M380 70H470M380 80L470 110"/><rect class="n" x="470" y="15" width="70" height="30"/><text x="490" y="35">PC 1</text><rect class="n" x="470" y="55" width="70" height="30"/><text x="490" y="75">PC 2</text><rect class="n" x="470" y="95" width="70" height="22"/><text x="478" y="110">Serveur</text></svg>
+<div class="card"><h3>Paire torsadée</h3><p>UTP / STP (blindée). Courants électriques ; diaphonie. Cat.1-2 : 4 Mbps · Cat.3 : 16 · Cat.4 : 20 · Cat.5 : 100 Mbps.</p></div>
+<div class="card"><h3>Coaxial</h3><p>Moins d’affaiblissement, fréquences plus hautes. Quelques centaines de Mbit/s sur 1 km ; au-delà de 10 km, l’atténuation limite le débit.</p></div>
+<div class="card"><h3>Fibre optique</h3><p>Fil de verre ~0,1 mm, insensible aux parasites, régénération jusqu’à 200 km. Multimode (&lt; Gb/s, ~km) ou monomode (plus loin, plus de débit).</p></div>
+<div class="card"><h3>Sans fil</h3><p><b>Faisceaux hertziens</b> : 2–15 GHz, directifs, horizon optique. <b>Ondes radio</b> : 10 kHz–2 GHz, pas de visibilité directe. <b>Satellite</b> : géostationnaire à 36 000 km, ou orbite basse 350–1400 km.</p></div>
+</div>
 
-<h3>Autres équipements</h3>
-<div class="grid"><div class="card"><b>Carte réseau</b><br>Connecte une machine au réseau, possède une adresse qui l’identifie ; un serveur doit avoir une carte performante.</div>
-<div class="card"><b>Imprimante réseau</b><br>Partagée entre terminaux ; doit avoir une carte réseau.</div>
-<div class="card"><b>Stockage</b><br>Serveur de fichiers (documents, photos, vidéos, musique) ; disques durs, CD, DVD, SD connectés.</div>
-<div class="card"><b>Serveur</b><br>Ordinateur puissant qui offre différents services aux clients connectés.</div></div>
-<p>Compléments : le <b>concentrateur</b> peut être relié à d’autres concentrateurs (câble droit PC-hub, croisé hub-modem) ; le <b>pont</b> relie des réseaux de structures différentes (802.3 Ethernet, 802.4 Token Bus, 802.5 Token Ring) ; le <b>commutateur</b> crée un circuit virtuel vers une destination précise ; le <b>routeur</b> choisit le meilleur chemin ; le <b>modem</b> sert par ex. sur réseau téléphonique ou ligne dédiée ; le <b>multiplexeur</b> transporte données, son, vidéo sur un même signal.</p>
-<h3>Exemple : réseau d’entreprise</h3>
-<svg viewBox="0 0 760 330" role="img" aria-label="Réseau d’entreprise : Internet, routeur, switchs, serveur, PC, imprimante, point d’accès, smartphone">
-<path class="l" d="M380 40V80M380 110V140M380 170H150M380 170H610M380 140V170M150 170V200M380 170V200M610 170V200M150 230V260"/>
-<ellipse class="n" cx="380" cy="26" rx="50" ry="16"/><text x="352" y="30">Internet</text>
-<rect class="n" x="335" y="80" width="90" height="30" rx="6"/><text x="352" y="100">Routeur</text>
-<rect class="n" x="335" y="140" width="90" height="30" rx="6"/><text x="360" y="160">Switch</text>
-<rect class="n" x="110" y="200" width="80" height="30" rx="6"/><text x="138" y="220">PC1</text>
-<rect class="n" x="340" y="200" width="80" height="30" rx="6"/><text x="368" y="220">PC2</text>
-<rect class="n" x="570" y="200" width="80" height="30" rx="6"/><text x="591" y="220">Serveur</text>
-<rect class="n" x="100" y="260" width="100" height="30" rx="6"/><text x="120" y="280">Imprimante</text>
-<rect class="n" x="480" y="250" width="130" height="30" rx="6"/><text x="490" y="270">Point d’accès Wi-Fi</text>
-<path class="l" d="M545 250V170" stroke-dasharray="4"/><path class="l" d="M545 280V305"/><text x="460" y="322">Smartphone (Wi-Fi) · 2ᵉ switch derrière le point d’accès</text></svg>
-<p><b>Équipements présents</b> : routeur, switch, serveur, point d’accès Wi-Fi, PC1, imprimante (et PC2, smartphone). <b>Matériel ou logiciel ?</b> Carte réseau = matériel · pilote réseau = logiciel · switch = matériel · système d’exploitation = logiciel · routeur = matériel.</p>
-<h2 id="sup">6. Supports de transmission</h2>
+<h2><i>2.3</i>Bande passante, bruit, capacité</h2>
+<p>Bande passante à <b>3 dB</b> : puissance divisée par 2.</p>
+<code class="eq">A = Ps / Pe &nbsp;·&nbsp; A(dB) = 10·log10(A) &nbsp;→ A = 0,5 ⇒ −3 dB</code>
+<p>Taux d’erreurs binaires : <b>TEB</b> = bits erronés / bits transmis (fibre ≈ 10⁻¹²).</p>
+<code class="eq">Shannon : C = W · log2(1 + S/B) &nbsp; bit/s</code>
+<div class="card"><h3>Calculateur de capacité</h3>
+<p>W (Hz) <input id="w" type="number" value="3100"> &nbsp; RSB (dB) <input id="s" type="number" value="32"></p>
+<p>S/B = <b id="sb"></b> → C ≈ <b class="k" id="cc"></b> bit/s <span class="cap">(exemple du cours : ≈ 33 000)</span></p></div>
+<details><summary>Vrai ou faux ?</summary><p>Paire torsadée = support immatériel : <b>faux</b>. Fibre = signaux électriques : <b>faux</b>. Ondes radio sans câble : <b>vrai</b>. Faisceau hertzien = transmission guidée : <b>faux</b>. Fibre monomode = longues distances : <b>vrai</b>.</p></details>
+</section>
+
+<section id="ch3" hidden>
+<h2><i>CH.3</i>Normalisation et organismes</h2>
 <div class="grid">
-<div class="card"><span class="tag">Métalliques</span><br>Paire torsadée, câble coaxial : courants électriques.</div>
-<div class="card"><span class="tag">Non métalliques</span><br>Fibre optique : onde optique, hauts débits.</div>
-<div class="card"><span class="tag">Immatériels</span><br>Sans fil : onde électromagnétique, mobilité.</div></div>
-<div class="tw"><table><tr><th>Support</th><th>À retenir</th></tr>
-<tr><td><b>Paire torsadée</b> UTP/STP</td><td>2 conducteurs en cuivre torsadés (hélice). Connecteurs RJ11/RJ45. Faible coût, facile à installer, LAN &lt; quelques km. Défaut : <b>diaphonie</b> entre paires. STP = blindée. Cat. 1-2 : 4 Mbps · Cat. 3 : 16 · Cat. 4 : 20 · Cat. 5 (100 Base T) : 100 Mbps.</td></tr>
-<tr><td><b>Câble coaxial</b></td><td>Deux conducteurs cylindriques de même axe séparés par un isolant. Moins d'affaiblissement, fréquences plus élevées. Connecteurs BNC. Quelques centaines de Mbit/s sur 1 km ; &gt; 10 km l'atténuation réduit le débit.</td></tr>
-<tr><td><b>Fibre optique</b></td><td>Fil de verre : <b>cœur</b> (lumière d'une LED ou laser) + <b>gaine</b> optique (réfraction). Très haut débit, régénération jusqu'à 200 km, insensible aux parasites électromagnétiques, résiste aux températures. <b>Multimode</b> (saut/gradient d'indice) : &lt; Gb/s, ~km. <b>Monomode</b> : plus de débit, plus longue portée.</td></tr>
-<tr><td><b>Faisceaux hertziens</b></td><td>2-15 GHz, 40 GHz ; antennes directionnelles ; limité à l'<b>horizon optique</b> (stations en hauteur). Liaisons longue distance, satellite.</td></tr>
-<tr><td><b>Satellite</b></td><td>Géostationnaire 36 000 km ; orbite basse 350-1400 km. Coût élevé, large bande partagée, délais longs.</td></tr>
-<tr><td><b>Ondes radioélectriques</b></td><td>10 kHz à 2 GHz ; pas de visibilité directe nécessaire ; sensibles aux interférences ; fréquences attribuées par accords internationaux.</td></tr></table></div>
+<div class="card"><h3>Norme</h3><p>Accords documentés décrivant des spécifications de produits ou services (ex. format d’une carte bancaire).</p></div>
+<div class="card"><h3>Pourquoi</h3><p>Éliminer les incompatibilités : parler le même « langage ».</p></div>
+<div class="card"><h3>Qui</h3><p>Organismes nationaux (AFNOR, ANSI…) et internationaux (ISO, UIT).</p></div>
+</div>
+<h2><i>3.1</i>Structure de l’UIT</h2>
+<figure class="fig sc"><svg viewBox="0 0 720 190" style="min-width:560px">
+<rect x="270" y="14" width="180" height="40" class="b"/><text x="360" y="38" text-anchor="middle">UIT (ITU) — Genève</text>
+<path d="M360 54V80M120 80H600M120 80V108M360 80V108M600 80V108"/>
+<g text-anchor="middle"><rect x="30" y="108" width="180" height="62" class="b"/><text x="120" y="132">UIT-T</text><text x="120" y="150" class="m">Normalisation · ex-CCITT</text>
+<rect x="270" y="108" width="180" height="62" class="b"/><text x="360" y="132">UIT-R / BR</text><text x="360" y="150" class="m">Radiocom. · ex-CCIR</text>
+<rect x="510" y="108" width="180" height="62" class="b"/><text x="600" y="132">UIT-D / BDT</text><text x="600" y="150" class="m">Développement</text></g></svg><figcaption>FIG. 3.1 — Secrétaire général + Conseil, trois secteurs</figcaption></figure>
+<div class="sc"><table><tr><th>Organisme</th><th>Domaine</th><th>Exemple</th></tr>
+<tr><td>ISO (1947, 165 pays)</td><td>Normes internationales industrielles et commerciales</td><td>ISO 9001 (qualité)</td></tr>
+<tr><td>UIT</td><td>Coordination mondiale, spectre radio</td><td>Recommandations réseaux</td></tr>
+<tr><td>ETSI</td><td>Normes européennes télécoms</td><td>GSM, 5G</td></tr>
+<tr><td>3GPP</td><td>Coopération UIT, ETSI, ARIB, ATIS, CCSA, TTA, TTC</td><td>Réseaux mobiles 3G/4G</td></tr>
+<tr><td>IEEE (500 000+ membres)</td><td>Électronique, informatique, réseaux</td><td>802.3 Ethernet · 802.11 Wi-Fi</td></tr>
+<tr><td>IETF (forum)</td><td>Documents RFC</td><td>HTTP, TCP, DNS</td></tr>
+<tr><td>Régional : CEPT, UAT, APT, CITEL…</td><td>Concertation entre États</td><td>—</td></tr></table></div>
 
-<div class="key"><b>Supports guidés</b> (matériels) : paire torsadée, coaxial, fibre. <b>Non guidés</b> (immatériels) : ondes radio, faisceaux hertziens, satellite. Un faisceau hertzien n’est donc <b>pas</b> une transmission guidée.</div>
-<div class="card"><b>Compléments</b><ul><li><b>Paire torsadée</b> : raccorde les usagers au central téléphonique ; l’affaiblissement dépend du diamètre des conducteurs ; répéteurs pour les longues distances ; plusieurs paires dans un câble → diaphonie ; bande passante selon diamètre et pureté ; avantages : technique maîtrisée, ajout d’équipements facile, faible coût ; STP : conducteur cylindrique (ou un blindage par paire) qui réduit les rayonnements parasites.</li>
-<li><b>Coaxial</b> : débit selon la longueur et les caractéristiques des conducteurs et de l’isolant ; âme conductrice, isolant (diélectrique), tresse de blindage, gaine.</li>
-<li><b>Fibre</b> : premières fibres télécoms vers 1970 (multimodes) ; diamètre ~0,1 mm ; quelques grammes au km ; facile d’emploi ; très grande capacité (plusieurs chaînes TV, téléphonie…) ; support principal des télécoms et des LAN haut débit.</li>
-<li><b>Sans fil</b> : ondes dans l’atmosphère ou le vide, souplesse pour la mobilité, pas de pose de câbles (coût réduit). Satellite : liaison par satellites en orbite, relaie de grands réseaux.</li></ul></div>
-<svg viewBox="0 0 760 190" role="img" aria-label="Fibre multimode à saut d’indice, à gradient d’indice, monomode">
-<rect class="n" x="20" y="20" width="220" height="40"/><path class="l" d="M20 40L60 25L100 55L140 25L180 55L240 35" stroke="#e11d48"/><text x="20" y="80">Multimode à saut d’indice</text>
-<rect class="n" x="270" y="20" width="220" height="40"/><path class="l" d="M270 40Q330 20 380 40T490 40" stroke="#e11d48"/><text x="270" y="80">Multimode à gradient d’indice</text>
-<rect class="n" x="520" y="20" width="220" height="40"/><path class="l" d="M520 40H740" stroke="#e11d48"/><text x="520" y="80">Monomode (cœur ~10 µm)</text>
-<text x="20" y="130">Multimode : débits &lt; Gb/s, distances ~km. Monomode : plus de débit, plus longue portée.</text>
-<text x="20" y="155">Le signal lumineux reste dans le cœur grâce à la gaine (réfraction).</text></svg>
-<h2 id="perf">7. Performances d'un support</h2>
-<h3>Bande passante</h3>
-<p>Bande de fréquences dans laquelle les signaux ont une puissance de sortie supérieure à un seuil. On utilise la bande passante à <b>3 dB</b> (puissance divisée par 2).</p>
-<div class="key"><code>A = Ps / Pe</code> · <code>A<sub>dB</sub> = 10·log₁₀(A)</code> · pour A = 0,5 → <b>−3 dB</b></div>
-<h3>Bruits, distorsions et TEB</h3>
-<p>Les supports déforment, affaiblissent et retardent les signaux (parasites, diaphonie, météo). La distance est un facteur majeur. <b>TEB</b> = bits erronés / bits transmis. Fibre : ~10⁻¹² (très faible) · câbles : moyen · sans fil : variable.</p>
-<h3>Capacité : théorème de Shannon</h3>
-<div class="key"><code>C = W · log₂(1 + S/B)</code> bit/s, avec W la bande passante (Hz) et S/B le rapport signal/bruit (linéaire).</div>
-<div class="card"><b>Exemple :</b> W = 3100 Hz, RSB = 32 dB → S/B = 1585 → C = 3100 · log₂(1586) ≈ <b>33 000 bit/s</b>.</div>
+<h2><i>3.2</i>Organismes tunisiens</h2>
+<div class="grid">
+<div class="card"><h3>INT</h3><p>Instance Nationale des Télécommunications : régulateur, concurrence saine, litiges d’interconnexion, numérotation.</p></div>
+<div class="card"><h3>ANF</h3><p>Agence Nationale des Fréquences (loi du 15 janvier 2001, siège à Tunis) : gestion, planification, contrôle du spectre.</p></div>
+<div class="card"><h3>CERT</h3><p>Centre d’Études et de Recherche des Télécommunications : études, audit, homologation des terminaux, contrôle des équipements.</p></div>
+<div class="card"><h3>ONT</h3><p>Office National de la Télédiffusion : radios publiques et privées, TNT, satellites, qualité de réception.</p></div>
+<div class="card"><h3>ANSI</h3><p>Agence Nationale de la Sécurité Informatique : stratégie, veille, normes et audit de sécurité.</p></div>
+<div class="card"><h3>ANCE / TunTrust</h3><p>Autorité de certification racine : certificats électroniques, confiance numérique, e-gouvernement.</p></div>
+</div>
+<details><summary>Associer situation et organisme</summary><p>Certificat électronique → <b>ANCE</b> · Qualité de service d’un opérateur → <b>INT</b> · Protection contre cyberattaques → <b>ANSI</b> · Brouillages radio → <b>ANF</b>.</p></details>
+</section>
 
-<h3>Formules à connaître</h3>
-<div class="key"><b>Affaiblissement</b> : A = Ps/Pe, A<sub>dB</sub> = 10·log₁₀(Ps/Pe) (négatif). Écrit en <b>atténuation positive</b> : 10·log₁₀(Pe/Ps) ; 15 dB d’atténuation = −15 dB. <b>RSB</b> : (S/B)<sub>dB</sub> = 10·log₁₀(S/B) donc S/B = 10<sup>RSB/10</sup>. <b>Octets → bits</b> : ×8. <b>Si log₂(X) = n</b> alors X = 2<sup>n</sup>.</div>
-<div class="card"><b>Fréquence de coupure</b> : fréquence où l’atténuation atteint 3 dB (puissance de sortie = moitié de l’entrée, signal encore exploitable). La bande passante est entre les fréquences de coupure : <code>BW = f₂ − f₁</code>. Plus elle est large, plus le support transporte d’informations par unité de temps. TEB = bits erronés / bits transmis (ex. j’envoie 1, le récepteur décide 0 : erreur).</div>
-<h2 id="test">8. Auto-test</h2>
-<details><summary>Broadcast vs multicast ?</summary>Broadcast : à tous les équipements du réseau local. Multicast : à un groupe de destinataires intéressés.</details>
-<details><summary>Commutation de circuits vs de paquets ?</summary>Circuits : chemin dédié établi avant la communication. Paquets : données découpées en paquets avec en-tête.</details>
-<details><summary>Rôle d'un hub ? D'un switch ?</summary>Hub : répète les données vers tous les autres ports. Switch : les envoie seulement au port approprié.</details>
-<details><summary>Qu'est-ce qu'un réseau ?</summary>Ensemble de matériels et de logiciels permettant à des équipements de communiquer entre eux.</details>
-<details><summary>Quel équipement pour : régénérer un signal / relier des réseaux / Wi-Fi ?</summary>Répéteur / routeur / point d'accès.</details>
-<details><summary>Vrai ou faux : la paire torsadée est un support immatériel ?</summary><span class="ko">Faux</span> : c'est un support métallique. De même, la fibre utilise de la lumière (pas des signaux électriques) et un faisceau hertzien n'est pas une transmission guidée.</details>
-<details><summary>Quel support insensible aux perturbations électromagnétiques ?</summary>La fibre optique.</details>
-<details><summary>Que vaut −3 dB ?</summary>Une puissance de sortie égale à la moitié de l'entrée (A = 0,5).</details>
-<details><summary>Associer support ↔ caractéristique</summary>Paire torsadée : deux conducteurs de cuivre torsadés · Coaxial : conducteur central entouré d’un blindage · Fibre : transmission par lumière · Faisceau hertzien : sans câble entre antennes · Ondes radio : propagation d’ondes électromagnétiques dans l’espace.</details>
-<details><summary>Compléter : cuivre, torsadés, blindage, lumière, antennes, sans fil, fibre optique</summary>Paire torsadée en <b>cuivre</b>, conducteurs <b>torsadés</b>, coaxial avec <b>blindage</b>, fibre = <b>lumière</b>, faisceau hertzien = deux <b>antennes</b> directionnelles, ondes radio = <b>sans fil</b>, la <b>fibre optique</b> est insensible aux perturbations électromagnétiques.</details>
-<details><summary>Vrai / Faux (10 affirmations du cours)</summary>Paire torsadée immatérielle : <span class="ko">Faux</span> · fibre = signaux électriques : <span class="ko">Faux</span> · coaxial a un conducteur central : <span class="ok">Vrai</span> · hertzien : antennes : <span class="ok">Vrai</span> · radio nécessite un câble : <span class="ko">Faux</span> · fibre peu sensible aux perturbations : <span class="ok">Vrai</span> · paire = deux conducteurs torsadés : <span class="ok">Vrai</span> · hertzien = transmission guidée : <span class="ko">Faux</span> · monomode : longues distances : <span class="ok">Vrai</span> · multimode : plusieurs modes : <span class="ok">Vrai</span>.</details>
-<details><summary>Répéteur, routeur, point d’accès, hub, switch, passerelle : rôle de chacun</summary>Régénérer un signal · relier différents réseaux · connecter en Wi-Fi · diffuser vers plusieurs ports · trame vers le port approprié · faire communiquer des réseaux à protocoles différents.</details>
+<section id="ch4" hidden>
+<h2><i>CH.4</i>Téléphonie fixe (RTC)</h2>
+<p>Le RTC (PSTN) transfère la voix par <span class="k">commutation de circuits</span> : liaison dédiée pendant tout l’échange. Voix numérisée = multiplexage temporel ; <b>64 kbit/s</b> réservés dans chaque sens (full duplex). La liaison abonné reste analogique : le commutateur numérise et dé-numérise.</p>
+<h2><i>4.1</i>Liaison élémentaire et poste</h2>
+<figure class="fig sc"><svg viewBox="0 0 720 170" style="min-width:560px">
+<rect x="20" y="50" width="120" height="70" class="b"/><text x="80" y="82" text-anchor="middle">Poste A</text><text x="80" y="100" text-anchor="middle" class="m">micro + écouteur</text>
+<rect x="580" y="50" width="120" height="70" class="b"/><text x="640" y="82" text-anchor="middle">Poste B</text>
+<rect x="260" y="30" width="200" height="110" class="b"/><text x="360" y="54" text-anchor="middle">Commutateur</text><text x="360" y="72" text-anchor="middle" class="m">détecte la boucle</text>
+<path d="M140 70H260M460 70H580M140 100H260M460 100H580"/>
+<path class="a d" d="M150 70V100M250 70V100"/>
+<circle class="a" cx="360" cy="112" r="10"/><text x="360" y="116" text-anchor="middle">E</text><text x="360" y="160" text-anchor="middle" class="m">batterie centrale</text></svg><figcaption>FIG. 4.1 — Paire bifilaire, alimentation par le central</figcaption></figure>
+<div class="grid">
+<div class="card"><h3>Organes du poste</h3><ul><li>Crochets : supportent le combiné</li><li>Micro : voix → signal électrique</li><li>Écouteur : signal → vibrations (haut-parleur)</li><li>Cadran/clavier : numérotation</li><li>Sonnerie : 50 Hz, 80 V</li></ul></div>
+<div class="card"><h3>Signalisation</h3><p>Décroché = boucle de courant fermée, détectée par le commutateur. Raccroché = boucle ouverte. À l’appel, le commutateur envoie 50 Hz ; au décrochage il coupe la sonnerie : la sonnerie s’arrête car le circuit de conversation est fermé.</p></div>
+</div>
 
-<h2 id="td">9. TD corrigé</h2>
-<details open><summary>Exercice 1 : supports, équipements, réseaux privé/public</summary>
-<p><b>1. Supports.</b> <b>Guidés (matériels)</b> : paire torsadée, câble coaxial, fibre optique. <b>Non guidés (immatériels)</b> : ondes radioélectriques, faisceaux hertziens, satellite.<br><b>3 avantages de la fibre</b> : très grande capacité de transmission · faible atténuation (régénération jusqu'à 200 km) · insensibilité aux perturbations électromagnétiques.</p>
-<p><b>2. Équipements.</b></p><div class="tw"><table><tr><th>Équipement</th><th>Fonction principale</th></tr><tr><td>Hub</td><td>Reçoit une trame et la diffuse vers tous ses ports</td></tr><tr><td>Switch</td><td>Transmet la trame uniquement vers le port correspondant à l'adresse de destination</td></tr><tr><td>Routeur</td><td>Relie des réseaux différents, achemine les paquets selon les adresses IP (meilleur chemin)</td></tr><tr><td>Répéteur</td><td>Régénère le signal pour augmenter la distance de transmission</td></tr></table></div>
-<p><b>3. Privé / public.</b></p><div class="tw"><table><tr><th></th><th>Privé</th><th>Public</th></tr><tr><td>Accès</td><td>Limité, utilisateurs autorisés</td><td>Grand nombre d'utilisateurs, accessible au public</td></tr><tr><td>Ressources</td><td>Internes</td><td>Services accessibles publiquement</td></tr><tr><td>Exemple</td><td>Réseau d'entreprise, d'université</td><td>Internet, PSTN, PLMN</td></tr></table></div></details>
-<details><summary>Exercice 2 : modem, 6200 octets/s, bande 300-3400 Hz → RSB ?</summary>
-<p><b>1.</b> W = 3400 − 300 = <b>3100 Hz</b>.<br><b>2.</b> C = 6200 octets/s × 8 = <b>49 600 bit/s</b> (le 56 kbit/s est le débit nominal, il ne sert pas au calcul).<br><b>3.</b> Shannon : 49 600 = 3100·log₂(1 + S/B) → 16 = log₂(1 + S/B) → 1 + S/B = 2¹⁶ = 65 536 → <b>S/B = 65 535</b>.<br><b>4.</b> RSB(dB) = 10·log₁₀(65 535) ≈ <b>48,16 dB</b>.</p>
-<p class="ko">Pour aller plus loin : pour atteindre 56 kbit/s, il faudrait 56 000/3100 ≈ 18,06 = log₂(1 + S/B), soit S/B ≈ 2,7·10⁵ ≈ 54,4 dB. La ligne (48,16 dB) est donc moins bonne que nécessaire.</p></details>
-<details><summary>Exercice 3 : W = 300 Hz, RSB = 3 dB → capacité ?</summary>
-<p><b>1.</b> S/B = 10<sup>3/10</sup> ≈ 1,995 (≈ 2).<br><b>2.</b> C = 300·log₂(1 + 1,995) = 300·log₂(2,995).<br><b>3.</b> log₂(2,995) = ln(2,995)/ln 2 ≈ 1,58 → C ≈ 300 × 1,58 ≈ 474 bit/s (valeur non arrondie ≈ 474,8). Réponse : <b>C ≈ 475 bit/s</b>.</p></details>
-<details><summary>Exercice 4 : affaiblissement 15 dB, Pe = 50 mW → Ps ?</summary>
-<p><b>1.</b> A<sub>dB</sub> = 10·log₁₀(Pe/Ps) → 15 = 10·log₁₀(50/Ps).<br><b>2.</b> 1,5 = log₁₀(50/Ps) → 10<sup>1,5</sup> ≈ 31,62 = 50/Ps.<br><b>3.</b> <b>Ps = 50/31,62 ≈ 1,58 mW</b>.<br><b>Vérification</b> : 10·log₁₀(50/1,58) ≈ 15 dB ✓.</p></details>
-<details><summary>Exercice 5 : Pe = 10 mW, Ps = 2,5 mW, bande passante 100 MHz</summary>
-<p><b>1. Atténuation.</b> A<sub>dB</sub> = 10·log₁₀(Pe/Ps) = 10·log₁₀(10/2,5) = 10·log₁₀(4) ≈ 10 × 0,602 = <b>6,02 dB</b> (la puissance a été divisée par 4).</p>
-<p><b>2. Impact sur la bande passante.</b> La bande passante est limitée par une atténuation maximale de 3 dB, la fréquence limite est donc celle où l'atténuation vaut 3 dB. Si à 100 MHz on mesure 6 dB, alors 6 dB &gt; 3 dB : 100 MHz est déjà hors bande, la fréquence de coupure est <b>f<sub>max</sub> &lt; 100 MHz</b> et la bande passante est <b>réduite</b>.<br><i>Illustration (hypothèse hors cours : filtre passe-bas du 1ᵉʳ ordre)</i> : 6 dB ↔ Ps/Pe = 1/4 = 1/(1 + (f/f<sub>c</sub>)²) → f<sub>c</sub> = 100/√3 ≈ 58 MHz. Sans connaître la courbe du câble, on ne peut conclure que « inférieure à 100 MHz ».</p>
-<p><b>3. Relation 3 dB ↔ qualité.</b> À −3 dB, Ps/Pe = 0,5 : A<sub>dB</sub> = 10·log₁₀(0,5) ≈ −3 dB (soit 3 dB d'atténuation). Le signal a perdu la moitié de sa puissance mais reste <b>exploitable</b> et reconnaissable à l'arrivée. Cette fréquence est la <b>fréquence de coupure</b>. Dans la bande (entre f₁ et f₂, <b>BW = f₂ − f₁</b>) les signaux passent correctement ; au-delà, ils sont trop affaiblis ou déformés (distorsions), la reconstruction se dégrade et le TEB augmente. Plus la bande est large, plus le support transporte d'informations par unité de temps.</p></details>
-<p style="color:var(--mu);margin-top:40px">Prochain chapitre : Organismes de normalisation pour les télécommunications.</p>
+<h2><i>4.2</i>Hiérarchie du RTC</h2>
+<figure class="fig sc"><svg id="hier" viewBox="0 0 720 330" style="min-width:600px"></svg><figcaption>FIG. 4.2 — Trois niveaux de zones ; réseau partiellement maillé (pointillés)</figcaption></figure>
+<div class="grid">
+<div class="card"><h3>ZAA</h3><p>Étoile, réseau de desserte. Les <b>CL</b> concentrent les lignes des abonnés ; le <b>CAA</b> met en relation sa zone (urgences incluses).</p></div>
+<div class="card"><h3>ZTS</h3><p>CTS : aucun abonné direct ; brassage des circuits quand un CAA n’atteint pas directement son homologue.</p></div>
+<div class="card"><h3>ZTP</h3><p>CTP : longues distances ; au moins un relié à un CTI (3 centres internationaux).</p></div>
+</div>
+<p>La <b>signalisation</b> circule sur un réseau parallèle : le réseau <b>sémaphore</b>.</p>
+
+<h2><i>4.3</i>Boucle locale</h2>
+<div class="flow"><span>Client</span><b>→</b><span>Branchement (paire cuivre, façade ou gaine technique)</span><b>→</b><span>Distribution → sous-répartiteur</span><b>→</b><span>Transport (forte capacité)</span><b>→</b><span>Répartiteur (passif, jarretière)</span><b>→</b><span>CAA</span></div>
+<p class="cap">En zone montagneuse : boucle locale radio par faisceau hertzien.</p>
+
+<h2><i>4.4</i>Établissement d’un appel</h2>
+<div class="flow"><span>Décroché</span><b>→</b><span>URA : raccordement</span><b>→</b><span>Enregistreur : mémorise le numéro</span><b>→</b><span>Traducteur : taxation + routage</span><b>→</b><span>Sélecteur : ligne libre + circuit/IT</span><b>→</b><span>Sonnerie 50 Hz</span><b>→</b><span>Décroché B : conversation</span></div>
+<details><summary>Quiz commutateurs</summary><p>Raccorde les abonnés : <b>CL</b> · Transit régional : <b>CTS/CAA</b> · Appel international : <b>CTI</b> · Rôle du CAA : acheminer entre zones locales · Plusieurs liaisons : plusieurs itinéraires, meilleure disponibilité.</p></details>
+</section>
 </main>
+<footer>Cours de Fadwa Saada — Iset’Com · fiches de révision</footer>
+
 <script>
-var r=document.documentElement;document.getElementById('t').onclick=function(){var d=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme:dark)').matches);r.setAttribute('data-theme',d?'light':'dark')};
-</script></body></html>
+const $=id=>document.getElementById(id);
+const R=document.documentElement;
+function setT(t){R.dataset.theme=t;$('tg').textContent=t==='dark'?'☀ Jour':'☾ Nuit';try{localStorage.setItem('tel-theme',t)}catch(e){}}
+let t0=null;try{t0=localStorage.getItem('tel-theme')}catch(e){}
+setT(t0||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));
+$('tg').onclick=()=>setT(R.dataset.theme==='dark'?'light':'dark');
+function show(){let h=location.hash.slice(1);if(!/^ch[1-4]$/.test(h))h='ch1';
+document.querySelectorAll('main section').forEach(s=>s.hidden=s.id!==h);
+document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+h));scrollTo(0,0)}
+addEventListener('hashchange',show);show();
+
+const L=(a,b,c,d,x='')=>`<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" ${x}/>`;
+const N=(x,y,x2='')=>`<circle class="n" cx="${x}" cy="${y}" r="6" ${x2}/>`;
+const T=(x,y,s)=>`<text x="${x}" y="${y}" text-anchor="middle">${s}</text>`;
+// topologies
+(()=>{let s='';
+let o=0;s+=L(o+10,55,o+134,55);[26,60,94,128].forEach((x,i)=>{let y=i%2?95:15;s+=L(x,55,x,y)+N(x,y)});s+=T(o+72,138,'Bus');
+o=144;s+=`<rect class="b" x="${o+62}" y="47" width="16" height="16"/>`;for(let i=0;i<5;i++){let a=i*1.2566-1.57,x=o+70+Math.cos(a)*48,y=55+Math.sin(a)*40;s+=L(o+70,55,x,y)+N(x,y)}s+=T(o+72,138,'Étoile');
+o=288;s+=`<ellipse cx="${o+70}" cy="55" rx="48" ry="40"/>`;for(let i=0;i<6;i++){let a=i*1.0472,x=o+70+Math.cos(a)*48,y=55+Math.sin(a)*40;s+=N(x,y)}s+=T(o+72,138,'Anneau');
+o=432;s+=L(o+70,14,o+40,55)+L(o+70,14,o+100,55);[[40,[18,62]],[100,[78,122]]].forEach(([p,c])=>c.forEach(x=>s+=L(o+p,55,o+x,100)+N(o+x,100)));s+=N(o+70,14,'class="n a"')+N(o+40,55)+N(o+100,55)+T(o+72,138,'Arbre');
+o=576;let P=[];for(let i=0;i<5;i++){let a=i*1.2566-1.57;P.push([o+70+Math.cos(a)*50,55+Math.sin(a)*42])}P.forEach((p,i)=>P.slice(i+1).forEach(q=>s+=L(p[0],p[1],q[0],q[1])));P.forEach(p=>s+=N(p[0],p[1]));s+=T(o+72,138,'Maille');
+$('topo').innerHTML=s})();
+// cast
+(()=>{let s='';[['Unicast',[1]],['Multicast',[0,2]],['Broadcast',[0,1,2,3]]].forEach(([n,sel],k)=>{let o=k*240;s+=N(o+30,60,'class="n a"')+`<text x="${o+30}" y="84" text-anchor="middle">source</text>`;
+for(let i=0;i<4;i++){let y=18+i*34,on=sel.includes(i);if(on)s+=L(o+36,60,o+164,y,'class="a"');s+=N(o+170,y,on?'class="n a"':'style="opacity:.4"')}s+=T(o+110,146,n)});$('cast').innerHTML=s})();
+// switching
+(()=>{let a='',b='';a+=N(30,90,'class="n a"')+N(330,90,'class="n a"')+T(30,115,'A')+T(330,115,'B');[110,190,260].forEach(x=>a+=N(x,90));a+=L(36,90,324,90,'class="a" stroke-width="3"')+`<text x="180" y="145" text-anchor="middle" class="m">circuit réservé</text>`;
+b+=N(390,90,'class="n a"')+N(690,90,'class="n a"')+T(390,115,'A')+T(690,115,'B');[[470,50],[470,130],[560,50],[560,130]].forEach(p=>b+=N(...p));
+b+=L(396,90,464,50)+L(396,90,464,130)+L(476,50,554,50)+L(476,130,554,130)+L(566,50,684,90)+L(566,130,684,90);
+b+=`<rect class="fa" x="500" y="44" width="14" height="12"/><rect class="fa" x="520" y="124" width="14" height="12"/><rect class="fa" x="440" y="78" width="14" height="12" style="opacity:.5"/><text x="540" y="160" text-anchor="middle" class="m">paquets : routes indépendantes</text>`;
+$('c1').innerHTML=a;$('c2').innerHTML=b})();
+// equipment ladder
+(()=>{let it=[['Répéteur','signal'],['Hub','tous ports'],['Pont','2 segments'],['Switch','LAN'],['Routeur','réseaux'],['Passerelle','protocoles']],s='';
+it.forEach(([n,d],i)=>{let x=10+i*118,h=40+i*14;s+=`<rect class="b" x="${x}" y="${130-h}" width="104" height="${h}"/>`+T(x+52,130-h+20,n)+`<text x="${x+52}" y="${130-h+36}" text-anchor="middle" class="m">${d}</text>`});$('eq').innerHTML=s})();
+// hierarchy
+(()=>{let rows=[['CTI','Transit international',2],['CTP','ZTP',3],['CTS','ZTS',4],['CAA','ZAA',4],['CL','Locaux',6]],s='',pos=[];
+rows.forEach(([n,z,c],r)=>{let y=14+r*62,row=[];for(let i=0;i<c;i++){let x=(i+.5)*(580/c)+10;row.push(x);}pos.push(row)});
+for(let r=1;r<rows.length;r++)pos[r].forEach((x,i)=>{let p=pos[r-1],j=Math.min(p.length-1,Math.floor(i*p.length/pos[r].length));s+=L(x,14+r*62,p[j],14+(r-1)*62+30)});
+pos[0].length>1&&(s+=L(pos[0][0]+26,29,pos[0][1]-26,29,'class="a d"'));pos[1].forEach((x,i)=>i&&(s+=L(pos[1][i-1]+26,91,x-26,91,'class="a d"')));pos[2].forEach((x,i)=>i&&(s+=L(pos[2][i-1]+26,153,x-26,153,'class="a d"')));
+rows.forEach(([n,z,c],r)=>pos[r].forEach(x=>{s+=`<rect class="b" x="${x-26}" y="${14+r*62}" width="52" height="30"/>`+T(x,14+r*62+19,n)}));
+pos[4].forEach(x=>{s+=L(x,262,x,300)+`<circle cx="${x}" cy="306" r="4" class="a"/>`});
+rows.forEach(([n,z],r)=>s+=`<text x="640" y="${34+r*62}" class="m">${z}</text>`);s+=`<text x="560" y="322" class="m">abonnés</text>`;
+$('hier').innerHTML=s})();
+// Shannon
+function sh(){let w=+$('w').value,db=+$('s').value,sb=Math.pow(10,db/10);$('sb').textContent=Math.round(sb);$('cc').textContent=Math.round(w*Math.log2(1+sb)).toLocaleString('fr-FR')}
+$('w').oninput=$('s').oninput=sh;sh();
+</script>
+</body>
+</html>
